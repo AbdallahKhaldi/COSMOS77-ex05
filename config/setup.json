@@ -2,6 +2,8 @@
   "version": "1.00",
   "experiment": {
     "model_id": "Qwen/Qwen2.5-14B-Instruct",
+    "model_params_billions": 14.7,
+    "target_vram_gb": 16,
     "platform": "kaggle_t4",
     "max_new_tokens": 20,
     "prompt": "Explain the attention mechanism in transformers.",

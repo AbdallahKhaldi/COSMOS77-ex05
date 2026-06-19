@@ -36,7 +36,25 @@ def main(argv: list[str] | None = None) -> int:
     if args.command is None:
         build_parser().print_help()
         return 0
-    print(f"`{args.command}` is not wired yet — it lands in its phase (see docs/TODO.md).")
+    return _dispatch(args.command)
+
+
+def _dispatch(command: str) -> int:
+    """Run one pipeline stage via the SDK and print a short summary."""
+    from cosmos77_ex05.sdk.sdk import SDK
+
+    sdk = SDK()
+    if command == "hardware":
+        out = sdk.capture_hardware()
+        spec, math = out["spec"], out["model_math"]
+        cpu = spec.get("cpu", {})
+        gpu = spec.get("gpu", {})
+        print(f"CPU: {cpu.get('model', '?')} ({cpu.get('cores_physical', '?')} physical cores)")
+        print(f"RAM: {spec.get('ram_gb', '?')} GB   GPU: {gpu.get('name', 'none / CPU-only')}")
+        print(f"model: {math.get('model_id')} -> FP16 {math.get('memory_gb', {}).get('fp16')} GB")
+        print(f"verdict: {math.get('verdict')}")
+        return 0
+    print(f"`{command}` is not wired yet — it lands in its phase (see docs/TODO.md).")
     return 0
 
 
