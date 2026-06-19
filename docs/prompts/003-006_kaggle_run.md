@@ -34,7 +34,7 @@ the Kaggle API, per `../KAGGLE_AUTOMATION.md`.
   pip-installs our package from the public repo, captures the T4 spec, then runs
   baseline → AirLLM → 8bit → 4bit via the SDK, printing the OOM, the AirLLM output,
   and a summary table (the rendered cells are the "screenshots").
-- **`experiments/kernel-metadata.json`** (`abdallahkhaldi07/cosmos77-ex05-airllm`,
+- **`experiments/kernel-metadata.json`** (`abdallahkhaldi07/cosmos77-ex05-airllm-benchmark`,
   GPU + internet on) and **`experiments/SETUP.md`** (reproduction + disk guidance).
 
 All model/GPU/HF I/O is mocked in the suite (≈110 tests, 100% coverage; `torch`,
@@ -61,7 +61,7 @@ Kaggle, the ledger contract. **Fixed three blocking findings:**
 ## Push + Hard Stop 1
 
 `uv run kaggle kernels push -p experiments/` → kernel
-`https://www.kaggle.com/code/abdallahkhaldi07/cosmos77-ex05-airllm`. The run is then
+`https://www.kaggle.com/code/abdallahkhaldi07/cosmos77-ex05-airllm-benchmark`. The run is then
 left to execute on the free T4 (AirLLM is slow; this takes a while). **Per the
 operating contract we STOP here** and wait for "the Kaggle run is complete" before
 fetching `results/*.json` and committing the measured numbers. No number is ever

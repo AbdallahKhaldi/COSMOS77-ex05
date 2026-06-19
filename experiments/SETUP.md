@@ -36,8 +36,8 @@ calls the SDK.
 
 ```bash
 uv run kaggle kernels push -p experiments/        # push the notebook + metadata
-uv run kaggle kernels status abdallahkhaldi07/cosmos77-ex05-airllm   # poll until complete
-uv run kaggle kernels output abdallahkhaldi07/cosmos77-ex05-airllm -p ./kaggle_out
+uv run kaggle kernels status abdallahkhaldi07/cosmos77-ex05-airllm-benchmark   # poll until complete
+uv run kaggle kernels output abdallahkhaldi07/cosmos77-ex05-airllm-benchmark -p ./kaggle_out
 # then copy kaggle_out/**/results/*.json -> results/, and the executed .ipynb -> experiments/
 ```
 
