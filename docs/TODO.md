@@ -604,51 +604,51 @@ T-0560 | 9 | ext | extension: reproducibility note (seed, config) in report | no
 
 ## Phase 10 — README as the deep technical report
 
-T-0561 | 10 | readme | README.md §1 title + abstract (honest-measurement thesis) | section present | todo
-T-0562 | 10 | readme | README.md §2 problem statement (29 GB on 16 GB T4) | section present | todo
-T-0563 | 10 | readme | README.md §3 hardware + param→memory math table | section present | todo
-T-0564 | 10 | readme | README.md §3 embed results/hardware.json numbers (byte-match) | numbers match | todo
-T-0565 | 10 | readme | README.md §4 FP16 baseline OOM + embed oom_screenshot.png | section present | todo
-T-0566 | 10 | readme | README.md §5 AirLLM layer=page + Paging table | section present | todo
-T-0567 | 10 | readme | README.md §6 quantization sweep + accuracy red line | section present | todo
-T-0568 | 10 | readme | README.md §7 metrics table (from METRICS.md, byte-match) | table present | todo
-T-0569 | 10 | readme | README.md §7 embed tokens_per_sec.png | figure embedded | todo
-T-0570 | 10 | readme | README.md §7 embed peak_vram.png | figure embedded | todo
-T-0571 | 10 | readme | README.md §7 embed ttft_vs_tpot.png | figure embedded | todo
-T-0572 | 10 | readme | README.md §7 embed quant_tradeoff.png | figure embedded | todo
-T-0573 | 10 | readme | README.md §8 Roofline analysis + embed roofline.png | section present | todo
-T-0574 | 10 | readme | README.md §9 economics break-even + embed breakeven.png | section present | todo
-T-0575 | 10 | readme | README.md §10 lecture-concept linking (Prefill/Decode etc.) | section present | todo
-T-0576 | 10 | readme | README.md §11 original extension + embed extension.png | section present | todo
-T-0577 | 10 | readme | README.md §12 research questions RQ-a..RQ-f answered explicitly | section present | todo
-T-0578 | 10 | readme | README.md §13 reproducibility (link experiments/SETUP.md) | section present | todo
-T-0579 | 10 | readme | README.md §14 honest limitations + negative results | section present | todo
-T-0580 | 10 | readme | README.md §15 conclusion (feasibility vs cost) | section present | todo
-T-0581 | 10 | readme | README.md — CI badge + version + authors header | header present | todo
-T-0582 | 10 | readme | tests/unit/test_readme_numbers.py — failing test: README numbers ⊆ ledger (red) | test fails | todo
-T-0583 | 10 | readme | src/cosmos77_ex05/report/readme_check.py — verify README numbers vs ledger (green) | test passes | todo
-T-0584 | 10 | readme | readme_check.py: parse README metric mentions + cross-check | test passes | todo
-T-0585 | 10 | readme | readme_check.py: refactor + docstrings + type hints | ruff clean | todo
-T-0586 | 10 | readme | README.md — assert ≥250 lines | line count ≥250 | todo
-T-0587 | 10 | readme | README.md — assert ≥6 embedded figures | figures ≥6 | todo
-T-0588 | 10 | readme | README.md — all figure paths resolve (figures/*.png present) | paths resolve | todo
-T-0589 | 10 | readme | README.md — table of contents w/ anchors | TOC present | todo
-T-0590 | 10 | readme | README.md — link to each report under reports/ | links resolve | todo
-T-0591 | 10 | qa | Run gate: ruff/format/line-cap zero on Phase 10 modules | gate green | todo
-T-0592 | 10 | qa | Run gate: pytest coverage ≥85% incl readme_check | coverage ≥85% | todo
-T-0593 | 10 | readme | README.md — every claim cites ledger or lecture | citations present | todo
-T-0594 | 10 | readme | README.md — proofread lecture vocabulary consistency | zero drift | todo
-T-0595 | 10 | readme | Wire readme_check into SDK facade verify_report() | SDK call works | todo
-T-0596 | 10 | readme | README.md — embed metrics.csv link for raw numbers | link present | todo
-T-0597 | 10 | readme | README.md — D1–D15 acceptance checklist table | checklist present | todo
-T-0598 | 10 | readme | README.md — KPI K-1..K-15 status table | table present | todo
-T-0599 | 10 | readme | tests/integration/test_readme_pipeline.py — ledgers→README cross-check | test passes | todo
-T-0600 | 10 | readme | README.md — screenshots gallery section | section present | todo
-T-0601 | 10 | report | Update CHANGELOG.md [1.00] with report completion | changelog updated | todo
-T-0602 | 10 | readme | README.md — author contribution statement | statement present | todo
-T-0603 | 10 | readme | readme_check.py: fail if README cites a number absent from ledger + test | test passes | todo
-T-0604 | 10 | docs | docs/prompts/010_phase10_readme.md prompt log | file present | todo
-T-0605 | 10 | ledger | Update docs/TODO.md statuses for completed Phase 10 tasks | statuses current | todo
+T-0561 | 10 | readme | README.md §1 title + abstract (honest-measurement thesis) | section present | done
+T-0562 | 10 | readme | README.md §2 problem statement (29 GB on 16 GB T4) | section present | done
+T-0563 | 10 | readme | README.md §3 hardware + param→memory math table | section present | done
+T-0564 | 10 | readme | README.md §3 embed results/hardware.json numbers (byte-match) | numbers match | done
+T-0565 | 10 | readme | README.md §4 FP16 baseline OOM + embed oom_screenshot.png | section present | done
+T-0566 | 10 | readme | README.md §5 AirLLM layer=page + Paging table | section present | done
+T-0567 | 10 | readme | README.md §6 quantization sweep + accuracy red line | section present | done
+T-0568 | 10 | readme | README.md §7 metrics table (from METRICS.md, byte-match) | table present | done
+T-0569 | 10 | readme | README.md §7 embed tokens_per_sec.png | figure embedded | done
+T-0570 | 10 | readme | README.md §7 embed peak_vram.png | figure embedded | done
+T-0571 | 10 | readme | README.md §7 embed ttft_vs_tpot.png | figure embedded | done
+T-0572 | 10 | readme | README.md §7 embed quant_tradeoff.png | figure embedded | done
+T-0573 | 10 | readme | README.md §8 Roofline analysis + embed roofline.png | section present | done
+T-0574 | 10 | readme | README.md §9 economics break-even + embed breakeven.png | section present | done
+T-0575 | 10 | readme | README.md §10 lecture-concept linking (Prefill/Decode etc.) | section present | done
+T-0576 | 10 | readme | README.md §11 original extension + embed extension.png | section present | done
+T-0577 | 10 | readme | README.md §12 research questions RQ-a..RQ-f answered explicitly | section present | done
+T-0578 | 10 | readme | README.md §13 reproducibility (link experiments/SETUP.md) | section present | done
+T-0579 | 10 | readme | README.md §14 honest limitations + negative results | section present | done
+T-0580 | 10 | readme | README.md §15 conclusion (feasibility vs cost) | section present | done
+T-0581 | 10 | readme | README.md — CI badge + version + authors header | header present | done
+T-0582 | 10 | readme | tests/unit/test_readme_numbers.py — failing test: README numbers ⊆ ledger (red) | test fails | done
+T-0583 | 10 | readme | src/cosmos77_ex05/report/readme_check.py — verify README numbers vs ledger (green) | test passes | done
+T-0584 | 10 | readme | readme_check.py: parse README metric mentions + cross-check | test passes | done
+T-0585 | 10 | readme | readme_check.py: refactor + docstrings + type hints | ruff clean | done
+T-0586 | 10 | readme | README.md — assert ≥250 lines | line count ≥250 | done
+T-0587 | 10 | readme | README.md — assert ≥6 embedded figures | figures ≥6 | done
+T-0588 | 10 | readme | README.md — all figure paths resolve (figures/*.png present) | paths resolve | done
+T-0589 | 10 | readme | README.md — table of contents w/ anchors | TOC present | done
+T-0590 | 10 | readme | README.md — link to each report under reports/ | links resolve | done
+T-0591 | 10 | qa | Run gate: ruff/format/line-cap zero on Phase 10 modules | gate green | done
+T-0592 | 10 | qa | Run gate: pytest coverage ≥85% incl readme_check | coverage ≥85% | done
+T-0593 | 10 | readme | README.md — every claim cites ledger or lecture | citations present | done
+T-0594 | 10 | readme | README.md — proofread lecture vocabulary consistency | zero drift | done
+T-0595 | 10 | readme | Wire readme_check into SDK facade verify_report() | SDK call works | done
+T-0596 | 10 | readme | README.md — embed metrics.csv link for raw numbers | link present | done
+T-0597 | 10 | readme | README.md — D1–D15 acceptance checklist table | checklist present | done
+T-0598 | 10 | readme | README.md — KPI K-1..K-15 status table | table present | done
+T-0599 | 10 | readme | tests/integration/test_readme_pipeline.py — ledgers→README cross-check | test passes | done
+T-0600 | 10 | readme | README.md — screenshots gallery section | section present | done
+T-0601 | 10 | report | Update CHANGELOG.md [1.00] with report completion | changelog updated | done
+T-0602 | 10 | readme | README.md — author contribution statement | statement present | done
+T-0603 | 10 | readme | readme_check.py: fail if README cites a number absent from ledger + test | test passes | done
+T-0604 | 10 | docs | docs/prompts/010_phase10_readme.md prompt log | file present | done
+T-0605 | 10 | ledger | Update docs/TODO.md statuses for completed Phase 10 tasks | statuses current | done
 
 ## Phase 11 — QA gauntlet + acceptance audit D1–D15
 
