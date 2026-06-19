@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets — HF_TOKEN / API keys live in .env (never committed; CLAUDE.md rule 9).
+# Kaggle creds live in ~/.kaggle/kaggle.json (OUTSIDE the repo) — never add it.
+.env
+kaggle.json
+.kaggle/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.cache/
+
+# Linters / formatters
+.ruff_cache/
+.mypy_cache/
+
+# OS / IDE / local tooling
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.claude/
+*.swp
+*.swo
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Model downloads + AirLLM layer shards (huge — never committed)
+data/*
+!data/.gitkeep
+kaggle_out/
+shards/
+
+# Runtime logs
+logs/*.log
+!logs/.gitkeep
+
+# Cover-sheet artifacts (the cover PDF is generated OUTSIDE the repo in Phase 12)
+*.filled.docx
+uoh-rl07-ex01.docx
+COSMOS77-ex05.pdf
+
+# KEEP the measured ledger, the figures, and the notebook (the deliverables).
+!results/*.json
+!figures/*.png
+!experiments/*.ipynb
+
+# uv cache (the lock file IS committed)
+.uv-cache/

@@ -1,0 +1,23 @@
+{
+  "version": "1.00",
+  "experiment": {
+    "model_id": "Qwen/Qwen2.5-14B-Instruct",
+    "platform": "kaggle_t4",
+    "max_new_tokens": 20,
+    "prompt": "Explain the attention mechanism in transformers.",
+    "quant_levels": ["fp16_baseline", "airllm_none", "airllm_8bit", "airllm_4bit"],
+    "layer_shards_saving_path": "/kaggle/working/shards",
+    "max_seq_len": 128
+  },
+  "hardware_assumptions": {
+    "on_prem_gpu_price_usd": 1600,
+    "hardware_life_years": 3,
+    "electricity_usd_per_kwh": 0.15,
+    "gpu_power_watts": 70
+  },
+  "paths": {
+    "results_dir": "results",
+    "figures_dir": "figures",
+    "reports_dir": "reports"
+  }
+}

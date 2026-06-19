@@ -1,0 +1,17 @@
+{
+  "version": "1.00",
+  "note": "API token prices in USD per 1,000,000 tokens. These are ASSUMPTIONS (representative public list prices, mid-2025); update before final submission. Cited in reports/ECONOMICS.md.",
+  "providers": {
+    "openai_gpt4o_mini": {"input_per_1m": 0.15, "output_per_1m": 0.60},
+    "anthropic_claude_haiku": {"input_per_1m": 0.80, "output_per_1m": 4.00},
+    "google_gemini_flash": {"input_per_1m": 0.075, "output_per_1m": 0.30}
+  },
+  "cloud_gpu": {
+    "t4_usd_per_hour": 0.35,
+    "a10g_usd_per_hour": 1.00
+  },
+  "prompt_caching": {
+    "cached_input_discount": 0.5,
+    "note": "Fraction of the input price paid for a cached (repeated system-prompt) token; e.g. 0.5 = 50% off. Providers vary (OpenAI ~0.5, Anthropic cache-read ~0.1)."
+  }
+}
