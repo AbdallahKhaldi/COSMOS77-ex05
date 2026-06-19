@@ -468,139 +468,139 @@ T-0430 | 7 | git | Commit Phase 7 measurement harness + figures (conventional co
 
 ## Phase 8 — Economic break-even (On-Prem vs API vs Cloud GPU)
 
-T-0431 | 8 | econ | tests/unit/test_workload_model.py — failing test for token-volume workload (red) | test fails | todo
-T-0432 | 8 | econ | src/cosmos77_ex05/economics/workload.py — tokens/day → annual volume (green) | test passes | todo
-T-0433 | 8 | econ | workload.py: refactor + docstrings + type hints | ruff clean | todo
-T-0434 | 8 | econ | tests/unit/test_onprem_curve.py — failing test for On-Prem cumulative cost (red) | test fails | todo
-T-0435 | 8 | econ | src/cosmos77_ex05/economics/onprem_curve.py — CAPEX amortised + OPEX over volume (green) | test passes | todo
-T-0436 | 8 | econ | onprem_curve.py: include electricity from measured power + runtime | test passes | todo
-T-0437 | 8 | econ | onprem_curve.py: refactor + docstrings + type hints | ruff clean | todo
-T-0438 | 8 | econ | tests/unit/test_api_curve.py — failing test for API cumulative cost (red) | test fails | todo
-T-0439 | 8 | econ | src/cosmos77_ex05/economics/api_curve.py — tokens × price over volume (green) | test passes | todo
-T-0440 | 8 | econ | api_curve.py: split input vs output token pricing | test passes | todo
-T-0441 | 8 | econ | api_curve.py: refactor + docstrings + type hints | ruff clean | todo
-T-0442 | 8 | econ | tests/unit/test_cached_api_curve.py — failing test for cached API line (red) | test fails | todo
-T-0443 | 8 | econ | src/cosmos77_ex05/economics/api_curve.py — prompt-caching discount variant (green) | test passes | todo
-T-0444 | 8 | econ | cached api: cache-write vs cache-read price tiers + test | test passes | todo
-T-0445 | 8 | econ | tests/unit/test_cloud_curve.py — failing test for cloud GPU cumulative cost (red) | test fails | todo
-T-0446 | 8 | econ | src/cosmos77_ex05/economics/cloud_curve.py — $/hr × hours over volume (green) | test passes | todo
-T-0447 | 8 | econ | cloud_curve.py: refactor + docstrings + type hints | ruff clean | todo
-T-0448 | 8 | econ | tests/unit/test_crossover.py — failing test for break-even volume solve (red) | test fails | todo
-T-0449 | 8 | econ | src/cosmos77_ex05/economics/crossover.py — numeric crossover On-Prem vs API (green) | test passes | todo
-T-0450 | 8 | econ | crossover.py: second crossover with caching-shifted API line | test passes | todo
-T-0451 | 8 | econ | crossover.py: handle no-crossover (always cheaper) case + test | test passes | todo
-T-0452 | 8 | econ | crossover.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0453 | 8 | econ | tests/unit/test_assumptions.py — failing test for assumptions table (red) | test fails | todo
-T-0454 | 8 | econ | src/cosmos77_ex05/economics/assumptions.py — collect all stated assumptions (green) | test passes | todo
-T-0455 | 8 | econ | assumptions.py: prices, $/kWh, watts, amortisation, utilisation listed | test passes | todo
-T-0456 | 8 | econ | assumptions.py: refactor + docstrings + type hints | ruff clean | todo
-T-0457 | 8 | econ | write results/economics.json via gatekeeper (curves + crossover) | test passes | todo
-T-0458 | 8 | plot | tests/unit/test_breakeven_plot.py — failing test for breakeven figure (red) | test fails | todo
-T-0459 | 8 | plot | src/cosmos77_ex05/plots/breakeven_plot.py — cost-vs-volume lines + crossover marker (green) | test passes | todo
-T-0460 | 8 | plot | breakeven_plot.py: On-Prem, API, cached-API, Cloud-GPU lines | test passes | todo
-T-0461 | 8 | plot | breakeven_plot.py: annotate crossover volumes | test passes | todo
-T-0462 | 8 | plot | breakeven_plot.py: save figures/breakeven.png | test passes | todo
-T-0463 | 8 | plot | breakeven_plot.py: refactor + docstrings + type hints | ruff clean | todo
-T-0464 | 8 | econ | Wire economics curves into SDK facade run_breakeven() | SDK call works | todo
-T-0465 | 8 | report | reports/ECONOMICS.md — assumptions table (all stated) | table present | todo
-T-0466 | 8 | report | reports/ECONOMICS.md — break-even narrative + crossover volume (RQ-f) | section present | todo
-T-0467 | 8 | report | reports/ECONOMICS.md — prompt-caching shift of the API line | section present | todo
-T-0468 | 8 | report | reports/ECONOMICS.md — privacy/security-aware recommendation | section present | todo
-T-0469 | 8 | report | reports/ECONOMICS.md — embed figures/breakeven.png | figure embedded | todo
-T-0470 | 8 | qa | Run gate: ruff/format/line-cap zero on Phase 8 modules | gate green | todo
-T-0471 | 8 | qa | Run gate: pytest coverage ≥85% on economics curves | coverage ≥85% | todo
-T-0472 | 8 | econ | onprem_curve.py: amortisation window sensitivity (1/2/3 yr) + test | test passes | todo
-T-0473 | 8 | econ | api_curve.py: per-provider price variants from pricing.json + test | test passes | todo
-T-0474 | 8 | econ | cloud_curve.py: spot vs on-demand crossover variants + test | test passes | todo
-T-0475 | 8 | econ | crossover.py: report break-even in tokens AND in days + test | test passes | todo
-T-0476 | 8 | econ | assumptions.py: cite source/date for every price + test | test passes | todo
-T-0477 | 8 | plot | breakeven_plot.py: log-x option for wide volume range + test | test passes | todo
-T-0478 | 8 | econ | tests/integration/test_economics_pipeline.py — pricing→curves→ledger→figure | test passes | todo
-T-0479 | 8 | econ | sensitivity sweep: utilisation 10/50/90% effect on crossover + test | test passes | todo
-T-0480 | 8 | econ | sensitivity sweep: $/kWh low/mid/high effect + test | test passes | todo
-T-0481 | 8 | report | reports/ECONOMICS.md — sensitivity table | table present | todo
-T-0482 | 8 | econ | economics fixture results/economics.sample.json | fixture loads | todo
-T-0483 | 8 | econ | crossover.py: assert curves monotonic increasing + test | test passes | todo
-T-0484 | 8 | report | reports/ECONOMICS.md — when Cloud-GPU beats both note | section present | todo
-T-0485 | 8 | report | reports/ECONOMICS.md — feasibility vs cost honest caveat (1-3 tok/s) | section present | todo
-T-0486 | 8 | econ | workload.py: map measured throughput → hours to serve volume + test | test passes | todo
-T-0487 | 8 | econ | onprem_curve.py: include AirLLM slow-throughput penalty (more GPU-hours) + test | test passes | todo
-T-0488 | 8 | econ | api_curve.py: numbers byte-match results/economics.json + test | test passes | todo
-T-0489 | 8 | plot | breakeven_plot.py: deterministic colors/legend (no flakes) + test | test passes | todo
-T-0490 | 8 | econ | economics/__init__ exports + public surface | imports clean | todo
-T-0491 | 8 | report | reports/ECONOMICS.md — tie to lecture On-Prem vs API framing | section present | todo
-T-0492 | 8 | docs | docs/prompts/008_phase8_economics.md prompt log | file present | todo
-T-0493 | 8 | ledger | Update docs/TODO.md statuses for completed Phase 8 tasks | statuses current | todo
-T-0494 | 8 | git | Commit Phase 8 economics + breakeven figure (conventional commit) | committed; CI green | todo
-T-0495 | 8 | econ | crossover.py: confidence interval / range on crossover + test | test passes | todo
-T-0496 | 8 | report | reports/ECONOMICS.md — decision matrix (volume × privacy → choice) | matrix present | todo
-T-0497 | 8 | econ | cloud_curve.py: idle-time billing caveat + test | test passes | todo
-T-0498 | 8 | econ | api_curve.py: rate-limit / latency non-cost factor note + test | test passes | todo
-T-0499 | 8 | econ | assumptions.py: amortisation = straight-line documented + test | test passes | todo
-T-0500 | 8 | econ | verify results/economics.json reproduces figure deterministically | reproducible | todo
+T-0431 | 8 | econ | tests/unit/test_workload_model.py — failing test for token-volume workload (red) | test fails | done
+T-0432 | 8 | econ | src/cosmos77_ex05/economics/workload.py — tokens/day → annual volume (green) | test passes | done
+T-0433 | 8 | econ | workload.py: refactor + docstrings + type hints | ruff clean | done
+T-0434 | 8 | econ | tests/unit/test_onprem_curve.py — failing test for On-Prem cumulative cost (red) | test fails | done
+T-0435 | 8 | econ | src/cosmos77_ex05/economics/onprem_curve.py — CAPEX amortised + OPEX over volume (green) | test passes | done
+T-0436 | 8 | econ | onprem_curve.py: include electricity from measured power + runtime | test passes | done
+T-0437 | 8 | econ | onprem_curve.py: refactor + docstrings + type hints | ruff clean | done
+T-0438 | 8 | econ | tests/unit/test_api_curve.py — failing test for API cumulative cost (red) | test fails | done
+T-0439 | 8 | econ | src/cosmos77_ex05/economics/api_curve.py — tokens × price over volume (green) | test passes | done
+T-0440 | 8 | econ | api_curve.py: split input vs output token pricing | test passes | done
+T-0441 | 8 | econ | api_curve.py: refactor + docstrings + type hints | ruff clean | done
+T-0442 | 8 | econ | tests/unit/test_cached_api_curve.py — failing test for cached API line (red) | test fails | done
+T-0443 | 8 | econ | src/cosmos77_ex05/economics/api_curve.py — prompt-caching discount variant (green) | test passes | done
+T-0444 | 8 | econ | cached api: cache-write vs cache-read price tiers + test | test passes | done
+T-0445 | 8 | econ | tests/unit/test_cloud_curve.py — failing test for cloud GPU cumulative cost (red) | test fails | done
+T-0446 | 8 | econ | src/cosmos77_ex05/economics/cloud_curve.py — $/hr × hours over volume (green) | test passes | done
+T-0447 | 8 | econ | cloud_curve.py: refactor + docstrings + type hints | ruff clean | done
+T-0448 | 8 | econ | tests/unit/test_crossover.py — failing test for break-even volume solve (red) | test fails | done
+T-0449 | 8 | econ | src/cosmos77_ex05/economics/crossover.py — numeric crossover On-Prem vs API (green) | test passes | done
+T-0450 | 8 | econ | crossover.py: second crossover with caching-shifted API line | test passes | done
+T-0451 | 8 | econ | crossover.py: handle no-crossover (always cheaper) case + test | test passes | done
+T-0452 | 8 | econ | crossover.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0453 | 8 | econ | tests/unit/test_assumptions.py — failing test for assumptions table (red) | test fails | done
+T-0454 | 8 | econ | src/cosmos77_ex05/economics/assumptions.py — collect all stated assumptions (green) | test passes | done
+T-0455 | 8 | econ | assumptions.py: prices, $/kWh, watts, amortisation, utilisation listed | test passes | done
+T-0456 | 8 | econ | assumptions.py: refactor + docstrings + type hints | ruff clean | done
+T-0457 | 8 | econ | write results/economics.json via gatekeeper (curves + crossover) | test passes | done
+T-0458 | 8 | plot | tests/unit/test_breakeven_plot.py — failing test for breakeven figure (red) | test fails | done
+T-0459 | 8 | plot | src/cosmos77_ex05/plots/breakeven_plot.py — cost-vs-volume lines + crossover marker (green) | test passes | done
+T-0460 | 8 | plot | breakeven_plot.py: On-Prem, API, cached-API, Cloud-GPU lines | test passes | done
+T-0461 | 8 | plot | breakeven_plot.py: annotate crossover volumes | test passes | done
+T-0462 | 8 | plot | breakeven_plot.py: save figures/breakeven.png | test passes | done
+T-0463 | 8 | plot | breakeven_plot.py: refactor + docstrings + type hints | ruff clean | done
+T-0464 | 8 | econ | Wire economics curves into SDK facade run_breakeven() | SDK call works | done
+T-0465 | 8 | report | reports/ECONOMICS.md — assumptions table (all stated) | table present | done
+T-0466 | 8 | report | reports/ECONOMICS.md — break-even narrative + crossover volume (RQ-f) | section present | done
+T-0467 | 8 | report | reports/ECONOMICS.md — prompt-caching shift of the API line | section present | done
+T-0468 | 8 | report | reports/ECONOMICS.md — privacy/security-aware recommendation | section present | done
+T-0469 | 8 | report | reports/ECONOMICS.md — embed figures/breakeven.png | figure embedded | done
+T-0470 | 8 | qa | Run gate: ruff/format/line-cap zero on Phase 8 modules | gate green | done
+T-0471 | 8 | qa | Run gate: pytest coverage ≥85% on economics curves | coverage ≥85% | done
+T-0472 | 8 | econ | onprem_curve.py: amortisation window sensitivity (1/2/3 yr) + test | test passes | done
+T-0473 | 8 | econ | api_curve.py: per-provider price variants from pricing.json + test | test passes | done
+T-0474 | 8 | econ | cloud_curve.py: spot vs on-demand crossover variants + test | test passes | done
+T-0475 | 8 | econ | crossover.py: report break-even in tokens AND in days + test | test passes | done
+T-0476 | 8 | econ | assumptions.py: cite source/date for every price + test | test passes | done
+T-0477 | 8 | plot | breakeven_plot.py: log-x option for wide volume range + test | test passes | done
+T-0478 | 8 | econ | tests/integration/test_economics_pipeline.py — pricing→curves→ledger→figure | test passes | done
+T-0479 | 8 | econ | sensitivity sweep: utilisation 10/50/90% effect on crossover + test | test passes | done
+T-0480 | 8 | econ | sensitivity sweep: $/kWh low/mid/high effect + test | test passes | done
+T-0481 | 8 | report | reports/ECONOMICS.md — sensitivity table | table present | done
+T-0482 | 8 | econ | economics fixture results/economics.sample.json | fixture loads | done
+T-0483 | 8 | econ | crossover.py: assert curves monotonic increasing + test | test passes | done
+T-0484 | 8 | report | reports/ECONOMICS.md — when Cloud-GPU beats both note | section present | done
+T-0485 | 8 | report | reports/ECONOMICS.md — feasibility vs cost honest caveat (1-3 tok/s) | section present | done
+T-0486 | 8 | econ | workload.py: map measured throughput → hours to serve volume + test | test passes | done
+T-0487 | 8 | econ | onprem_curve.py: include AirLLM slow-throughput penalty (more GPU-hours) + test | test passes | done
+T-0488 | 8 | econ | api_curve.py: numbers byte-match results/economics.json + test | test passes | done
+T-0489 | 8 | plot | breakeven_plot.py: deterministic colors/legend (no flakes) + test | test passes | done
+T-0490 | 8 | econ | economics/__init__ exports + public surface | imports clean | done
+T-0491 | 8 | report | reports/ECONOMICS.md — tie to lecture On-Prem vs API framing | section present | done
+T-0492 | 8 | docs | docs/prompts/008_phase8_economics.md prompt log | file present | done
+T-0493 | 8 | ledger | Update docs/TODO.md statuses for completed Phase 8 tasks | statuses current | done
+T-0494 | 8 | git | Commit Phase 8 economics + breakeven figure (conventional commit) | committed; CI green | done
+T-0495 | 8 | econ | crossover.py: confidence interval / range on crossover + test | test passes | done
+T-0496 | 8 | report | reports/ECONOMICS.md — decision matrix (volume × privacy → choice) | matrix present | done
+T-0497 | 8 | econ | cloud_curve.py: idle-time billing caveat + test | test passes | done
+T-0498 | 8 | econ | api_curve.py: rate-limit / latency non-cost factor note + test | test passes | done
+T-0499 | 8 | econ | assumptions.py: amortisation = straight-line documented + test | test passes | done
+T-0500 | 8 | econ | verify results/economics.json reproduces figure deterministically | reproducible | done
 
 ## Phase 9 — Lecture-concept analysis + original extension
 
-T-0501 | 9 | concept | reports/CONCEPTS.md — Prefill→TTFT (GEMM, compute-bound) section | section present | todo
-T-0502 | 9 | concept | reports/CONCEPTS.md — Decode→TPOT (GEMV, memory-bound) section | section present | todo
-T-0503 | 9 | concept | reports/CONCEPTS.md — compute-bound vs memory-bound diagnosis | section present | todo
-T-0504 | 9 | concept | reports/CONCEPTS.md — VRAM capacity vs bandwidth distinction | section present | todo
-T-0505 | 9 | concept | reports/CONCEPTS.md — Paging analogy (layer=page, fault, mmap, eviction) | section present | todo
-T-0506 | 9 | concept | reports/CONCEPTS.md — quantization (FP16/Q8/Q4/NF4) memory math | section present | todo
-T-0507 | 9 | concept | reports/CONCEPTS.md — KV-cache role in decode memory traffic | section present | todo
-T-0508 | 9 | concept | reports/CONCEPTS.md — Roofline ridge point + operating points | section present | todo
-T-0509 | 9 | concept | reports/CONCEPTS.md — disk BW ≪ HBM BW explains ~1-3 tok/s | section present | todo
-T-0510 | 9 | concept | reports/CONCEPTS.md — On-Prem vs API + prompt caching framing | section present | todo
-T-0511 | 9 | concept | tests/unit/test_concept_trace.py — failing test for concept→ledger traceability (red) | test fails | todo
-T-0512 | 9 | concept | src/cosmos77_ex05/analysis/concept_trace.py — map each concept→result number (green) | test passes | todo
-T-0513 | 9 | concept | concept_trace.py: assert every claim cites a ledger field | test passes | todo
-T-0514 | 9 | concept | concept_trace.py: refactor + docstrings + type hints | ruff clean | todo
-T-0515 | 9 | concept | reports/CONCEPTS.md — answer RQ-a explicitly w/ ledger citations | RQ-a answered | todo
-T-0516 | 9 | concept | reports/CONCEPTS.md — answer RQ-b explicitly w/ ledger citations | RQ-b answered | todo
-T-0517 | 9 | concept | reports/CONCEPTS.md — answer RQ-c explicitly w/ ledger citations | RQ-c answered | todo
-T-0518 | 9 | concept | reports/CONCEPTS.md — answer RQ-d explicitly w/ ledger citations | RQ-d answered | todo
-T-0519 | 9 | concept | reports/CONCEPTS.md — answer RQ-e explicitly w/ ledger citations | RQ-e answered | todo
-T-0520 | 9 | concept | reports/CONCEPTS.md — answer RQ-f explicitly w/ ledger citations | RQ-f answered | todo
-T-0521 | 9 | ext | docs/PRD_extension.md — choose extension (quant Pareto / QLoRA / three-way CPU-GPU-AirLLM) | choice fixed | todo
-T-0522 | 9 | ext | tests/unit/test_extension.py — failing test for extension core (red) | test fails | todo
-T-0523 | 9 | ext | src/cosmos77_ex05/extensions/__init__ + module skeleton (green) | test passes | todo
-T-0524 | 9 | ext | extensions: model-size sweep (1.5B/7B/14B) memory/speed comparison core | test passes | todo
-T-0525 | 9 | ext | model-size sweep: predicted vs measured VRAM per size + test | test passes | todo
-T-0526 | 9 | ext | model-size sweep: write results/extension_modelsize.json + test | test passes | todo
-T-0527 | 9 | ext | extensions: quant Pareto frontier (memory vs quality) core + test | test passes | todo
-T-0528 | 9 | ext | quant Pareto: identify Pareto-optimal level + test | test passes | todo
-T-0529 | 9 | ext | extensions: QLoRA adapter demo (NF4 base + LoRA) core (mocked) + test | test passes | todo
-T-0530 | 9 | ext | QLoRA demo: adapter params vs base params ratio + test | test passes | todo
-T-0531 | 9 | ext | extensions: three-way CPU-only vs GPU-resident vs AirLLM comparison + test | test passes | todo
-T-0532 | 9 | ext | three-way: throughput/peak-mem/feasibility table + test | test passes | todo
-T-0533 | 9 | ext | extensions: refactor each module ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0534 | 9 | plot | tests/unit/test_extension_plot.py — failing test for extension figure (red) | test fails | todo
-T-0535 | 9 | plot | src/cosmos77_ex05/plots/extension_plot.py — render extension figure (green) | test passes | todo
-T-0536 | 9 | plot | extension_plot.py: save figures/extension.png | test passes | todo
-T-0537 | 9 | plot | extension_plot.py: refactor + docstrings + type hints | ruff clean | todo
-T-0538 | 9 | ext | Wire extension into SDK facade run_extension() | SDK call works | todo
-T-0539 | 9 | report | reports/EXTENSIONS.md — extension motivation + method | report present | todo
-T-0540 | 9 | report | reports/EXTENSIONS.md — results table + figure embedded | table+figure present | todo
-T-0541 | 9 | report | reports/EXTENSIONS.md — tie extension to lecture concepts | section present | todo
-T-0542 | 9 | qa | Run gate: ruff/format/line-cap zero on Phase 9 modules | gate green | todo
-T-0543 | 9 | qa | Run gate: pytest coverage ≥85% on analysis/extensions/plots | coverage ≥85% | todo
-T-0544 | 9 | nb | Notebook cell: run extension experiment on T4 | cell drafted | todo
-T-0545 | 9 | nb | Notebook markdown: explain extension hypothesis + expected result | markdown present | todo
-T-0546 | 9 | ext | extension fixture results/extension.sample.json | fixture loads | todo
-T-0547 | 9 | concept | reports/CONCEPTS.md — Amdahl/bandwidth bound note for AirLLM | section present | todo
-T-0548 | 9 | concept | concept_trace.py: emit concept→ledger CSV map + test | test passes | todo
-T-0549 | 9 | ext | extensions/__init__ exports + public surface | imports clean | todo
-T-0550 | 9 | ext | tests/integration/test_extension_pipeline.py — extension→ledger→figure | test passes | todo
-T-0551 | 9 | report | reports/CONCEPTS.md — cross-reference every figure/table | references resolve | todo
-T-0552 | 9 | ext | model-size sweep: ridge-point comparison across sizes + test | test passes | todo
-T-0553 | 9 | ext | quant Pareto: knee-point detection + test | test passes | todo
-T-0554 | 9 | ext | three-way: state which is feasible on free T4 + test | test passes | todo
-T-0555 | 9 | concept | reports/CONCEPTS.md — honest negative-result framing (OOM is data) | section present | todo
-T-0556 | 9 | docs | docs/prompts/009_phase9_concepts.md prompt log | file present | todo
-T-0557 | 9 | ledger | Update docs/TODO.md statuses for completed Phase 9 tasks | statuses current | todo
-T-0558 | 9 | git | Commit Phase 9 concepts + extension (conventional commit) | committed; CI green | todo
-T-0559 | 9 | concept | reports/CONCEPTS.md — map each RQ→D-criterion→ledger field | map present | todo
-T-0560 | 9 | ext | extension: reproducibility note (seed, config) in report | note present | todo
+T-0501 | 9 | concept | reports/CONCEPTS.md — Prefill→TTFT (GEMM, compute-bound) section | section present | done
+T-0502 | 9 | concept | reports/CONCEPTS.md — Decode→TPOT (GEMV, memory-bound) section | section present | done
+T-0503 | 9 | concept | reports/CONCEPTS.md — compute-bound vs memory-bound diagnosis | section present | done
+T-0504 | 9 | concept | reports/CONCEPTS.md — VRAM capacity vs bandwidth distinction | section present | done
+T-0505 | 9 | concept | reports/CONCEPTS.md — Paging analogy (layer=page, fault, mmap, eviction) | section present | done
+T-0506 | 9 | concept | reports/CONCEPTS.md — quantization (FP16/Q8/Q4/NF4) memory math | section present | done
+T-0507 | 9 | concept | reports/CONCEPTS.md — KV-cache role in decode memory traffic | section present | done
+T-0508 | 9 | concept | reports/CONCEPTS.md — Roofline ridge point + operating points | section present | done
+T-0509 | 9 | concept | reports/CONCEPTS.md — disk BW ≪ HBM BW explains ~1-3 tok/s | section present | done
+T-0510 | 9 | concept | reports/CONCEPTS.md — On-Prem vs API + prompt caching framing | section present | done
+T-0511 | 9 | concept | tests/unit/test_concept_trace.py — failing test for concept→ledger traceability (red) | test fails | done
+T-0512 | 9 | concept | src/cosmos77_ex05/analysis/concept_trace.py — map each concept→result number (green) | test passes | done
+T-0513 | 9 | concept | concept_trace.py: assert every claim cites a ledger field | test passes | done
+T-0514 | 9 | concept | concept_trace.py: refactor + docstrings + type hints | ruff clean | done
+T-0515 | 9 | concept | reports/CONCEPTS.md — answer RQ-a explicitly w/ ledger citations | RQ-a answered | done
+T-0516 | 9 | concept | reports/CONCEPTS.md — answer RQ-b explicitly w/ ledger citations | RQ-b answered | done
+T-0517 | 9 | concept | reports/CONCEPTS.md — answer RQ-c explicitly w/ ledger citations | RQ-c answered | done
+T-0518 | 9 | concept | reports/CONCEPTS.md — answer RQ-d explicitly w/ ledger citations | RQ-d answered | done
+T-0519 | 9 | concept | reports/CONCEPTS.md — answer RQ-e explicitly w/ ledger citations | RQ-e answered | done
+T-0520 | 9 | concept | reports/CONCEPTS.md — answer RQ-f explicitly w/ ledger citations | RQ-f answered | done
+T-0521 | 9 | ext | docs/PRD_extension.md — choose extension (quant Pareto / QLoRA / three-way CPU-GPU-AirLLM) | choice fixed | done
+T-0522 | 9 | ext | tests/unit/test_extension.py — failing test for extension core (red) | test fails | done
+T-0523 | 9 | ext | src/cosmos77_ex05/extensions/__init__ + module skeleton (green) | test passes | done
+T-0524 | 9 | ext | extensions: model-size sweep (1.5B/7B/14B) memory/speed comparison core | test passes | done
+T-0525 | 9 | ext | model-size sweep: predicted vs measured VRAM per size + test | test passes | done
+T-0526 | 9 | ext | model-size sweep: write results/extension_modelsize.json + test | test passes | done
+T-0527 | 9 | ext | extensions: quant Pareto frontier (memory vs quality) core + test | test passes | done
+T-0528 | 9 | ext | quant Pareto: identify Pareto-optimal level + test | test passes | done
+T-0529 | 9 | ext | extensions: QLoRA adapter demo (NF4 base + LoRA) core (mocked) + test | test passes | done
+T-0530 | 9 | ext | QLoRA demo: adapter params vs base params ratio + test | test passes | done
+T-0531 | 9 | ext | extensions: three-way CPU-only vs GPU-resident vs AirLLM comparison + test | test passes | done
+T-0532 | 9 | ext | three-way: throughput/peak-mem/feasibility table + test | test passes | done
+T-0533 | 9 | ext | extensions: refactor each module ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0534 | 9 | plot | tests/unit/test_extension_plot.py — failing test for extension figure (red) | test fails | done
+T-0535 | 9 | plot | src/cosmos77_ex05/plots/extension_plot.py — render extension figure (green) | test passes | done
+T-0536 | 9 | plot | extension_plot.py: save figures/extension.png | test passes | done
+T-0537 | 9 | plot | extension_plot.py: refactor + docstrings + type hints | ruff clean | done
+T-0538 | 9 | ext | Wire extension into SDK facade run_extension() | SDK call works | done
+T-0539 | 9 | report | reports/EXTENSIONS.md — extension motivation + method | report present | done
+T-0540 | 9 | report | reports/EXTENSIONS.md — results table + figure embedded | table+figure present | done
+T-0541 | 9 | report | reports/EXTENSIONS.md — tie extension to lecture concepts | section present | done
+T-0542 | 9 | qa | Run gate: ruff/format/line-cap zero on Phase 9 modules | gate green | done
+T-0543 | 9 | qa | Run gate: pytest coverage ≥85% on analysis/extensions/plots | coverage ≥85% | done
+T-0544 | 9 | nb | Notebook cell: run extension experiment on T4 | cell drafted | done
+T-0545 | 9 | nb | Notebook markdown: explain extension hypothesis + expected result | markdown present | done
+T-0546 | 9 | ext | extension fixture results/extension.sample.json | fixture loads | done
+T-0547 | 9 | concept | reports/CONCEPTS.md — Amdahl/bandwidth bound note for AirLLM | section present | done
+T-0548 | 9 | concept | concept_trace.py: emit concept→ledger CSV map + test | test passes | done
+T-0549 | 9 | ext | extensions/__init__ exports + public surface | imports clean | done
+T-0550 | 9 | ext | tests/integration/test_extension_pipeline.py — extension→ledger→figure | test passes | done
+T-0551 | 9 | report | reports/CONCEPTS.md — cross-reference every figure/table | references resolve | done
+T-0552 | 9 | ext | model-size sweep: ridge-point comparison across sizes + test | test passes | done
+T-0553 | 9 | ext | quant Pareto: knee-point detection + test | test passes | done
+T-0554 | 9 | ext | three-way: state which is feasible on free T4 + test | test passes | done
+T-0555 | 9 | concept | reports/CONCEPTS.md — honest negative-result framing (OOM is data) | section present | done
+T-0556 | 9 | docs | docs/prompts/009_phase9_concepts.md prompt log | file present | done
+T-0557 | 9 | ledger | Update docs/TODO.md statuses for completed Phase 9 tasks | statuses current | done
+T-0558 | 9 | git | Commit Phase 9 concepts + extension (conventional commit) | committed; CI green | done
+T-0559 | 9 | concept | reports/CONCEPTS.md — map each RQ→D-criterion→ledger field | map present | done
+T-0560 | 9 | ext | extension: reproducibility note (seed, config) in report | note present | done
 
 ## Phase 10 — README as the deep technical report
 
