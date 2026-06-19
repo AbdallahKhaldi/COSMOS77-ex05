@@ -385,86 +385,86 @@ T-0350 | 6 | quant | red_line.py: report which level crosses the red line in led
 
 ## Phase 7 — Measurement harness + tables + graphs + Roofline
 
-T-0351 | 7 | meas | tests/unit/test_ttft.py — failing test for TTFT measurement (red) | test fails | todo
-T-0352 | 7 | meas | src/cosmos77_ex05/measure/ttft.py — time-to-first-token from prefill (green) | test passes | todo
-T-0353 | 7 | meas | ttft.py: refactor + docstrings + type hints | ruff clean | todo
-T-0354 | 7 | meas | tests/unit/test_tpot.py — failing test for TPOT/ITL measurement (red) | test fails | todo
-T-0355 | 7 | meas | src/cosmos77_ex05/measure/tpot.py — mean inter-token latency from decode (green) | test passes | todo
-T-0356 | 7 | meas | tpot.py: ITL distribution (p50/p95) helper + test | test passes | todo
-T-0357 | 7 | meas | tpot.py: refactor + docstrings + type hints | ruff clean | todo
-T-0358 | 7 | meas | tests/unit/test_throughput.py — failing test for tokens/sec (red) | test fails | todo
-T-0359 | 7 | meas | src/cosmos77_ex05/measure/throughput.py — tokens / total_decode_time (green) | test passes | todo
-T-0360 | 7 | meas | throughput.py: refactor + docstrings + type hints | ruff clean | todo
-T-0361 | 7 | meas | tests/unit/test_peakmem.py — failing test for peak VRAM+RAM aggregation (red) | test fails | todo
-T-0362 | 7 | meas | src/cosmos77_ex05/measure/peakmem.py — peak VRAM + peak RAM collation (green) | test passes | todo
-T-0363 | 7 | meas | peakmem.py: refactor + docstrings + type hints | ruff clean | todo
-T-0364 | 7 | meas | tests/unit/test_runtime.py — failing test for total runtime + est. power (red) | test fails | todo
-T-0365 | 7 | meas | src/cosmos77_ex05/measure/runtime.py — total runtime + watts×time energy (green) | test passes | todo
-T-0366 | 7 | meas | runtime.py: refactor + docstrings + type hints | ruff clean | todo
-T-0367 | 7 | meas | tests/unit/test_metric_aggregate.py — failing test for per-scenario rollup (red) | test fails | todo
-T-0368 | 7 | meas | src/cosmos77_ex05/measure/aggregate.py — load all results/*.json → table rows (green) | test passes | todo
-T-0369 | 7 | meas | aggregate.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0370 | 7 | meas | measure/__init__ exports + public surface | imports clean | todo
-T-0371 | 7 | tables | tests/unit/test_metrics_table.py — failing test for METRICS.md generator (red) | test fails | todo
-T-0372 | 7 | tables | src/cosmos77_ex05/report/metrics_table.py — render reports/METRICS.md from ledger (green) | test passes | todo
-T-0373 | 7 | tables | metrics_table.py: columns TTFT/TPOT/tok-s/peakVRAM/peakRAM/runtime/power/quality | test passes | todo
-T-0374 | 7 | tables | metrics_table.py: refactor + docstrings + type hints | ruff clean | todo
-T-0375 | 7 | plot | tests/unit/test_plot_tokens.py — failing test for tokens_per_sec figure (red) | test fails | todo
-T-0376 | 7 | plot | src/cosmos77_ex05/plots/tokens_per_sec.py — bar chart per scenario (green) | test passes | todo
-T-0377 | 7 | plot | tokens_per_sec.py: save figures/tokens_per_sec.png deterministically | test passes | todo
-T-0378 | 7 | plot | tokens_per_sec.py: refactor + docstrings + type hints | ruff clean | todo
-T-0379 | 7 | plot | tests/unit/test_plot_vram.py — failing test for peak_vram figure (red) | test fails | todo
-T-0380 | 7 | plot | src/cosmos77_ex05/plots/peak_vram.py — bar chart + 16 GB T4 line (green) | test passes | todo
-T-0381 | 7 | plot | peak_vram.py: save figures/peak_vram.png; mark OOM baseline | test passes | todo
-T-0382 | 7 | plot | peak_vram.py: refactor + docstrings + type hints | ruff clean | todo
-T-0383 | 7 | plot | tests/unit/test_plot_ttft_tpot.py — failing test for ttft_vs_tpot figure (red) | test fails | todo
-T-0384 | 7 | plot | src/cosmos77_ex05/plots/ttft_vs_tpot.py — grouped bars TTFT vs TPOT (green) | test passes | todo
-T-0385 | 7 | plot | ttft_vs_tpot.py: save figures/ttft_vs_tpot.png | test passes | todo
-T-0386 | 7 | plot | ttft_vs_tpot.py: refactor + docstrings + type hints | ruff clean | todo
-T-0387 | 7 | plot | tests/unit/test_plot_quant.py — failing test for quant_tradeoff figure (red) | test fails | todo
-T-0388 | 7 | plot | src/cosmos77_ex05/plots/quant_tradeoff.py — memory vs quality scatter (green) | test passes | todo
-T-0389 | 7 | plot | quant_tradeoff.py: save figures/quant_tradeoff.png | test passes | todo
-T-0390 | 7 | plot | quant_tradeoff.py: refactor + docstrings + type hints | ruff clean | todo
-T-0391 | 7 | roof | tests/unit/test_roofline_math.py — failing test for arithmetic intensity (red) | test fails | todo
-T-0392 | 7 | roof | src/cosmos77_ex05/analysis/roofline.py — FLOPs/byte per phase (green) | test passes | todo
-T-0393 | 7 | roof | roofline.py: ridge point = peak_FLOPS / peak_BW (T4 ≈65T / ≈320 ⇒ ≈203) | test passes | todo
-T-0394 | 7 | roof | roofline.py: decode AI≈1 ⇒ memory-bound classification | test passes | todo
-T-0395 | 7 | roof | roofline.py: prefill higher AI ⇒ compute-bound classification | test passes | todo
-T-0396 | 7 | roof | roofline.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0397 | 7 | roof | tests/unit/test_plot_roofline.py — failing test for roofline figure (red) | test fails | todo
-T-0398 | 7 | roof | src/cosmos77_ex05/plots/roofline_plot.py — log-log roofline w/ ridge + points (green) | test passes | todo
-T-0399 | 7 | roof | roofline_plot.py: plot prefill & decode operating points | test passes | todo
-T-0400 | 7 | roof | roofline_plot.py: save figures/roofline.png | test passes | todo
-T-0401 | 7 | roof | roofline_plot.py: refactor + docstrings + type hints | ruff clean | todo
-T-0402 | 7 | meas | Wire measure+plots into SDK facade build_metrics() | SDK call works | todo
-T-0403 | 7 | report | reports/METRICS.md — narrative around the generated table | report present | todo
-T-0404 | 7 | report | reports/METRICS.md — embed all four metric figures | figures embedded | todo
-T-0405 | 7 | qa | Run gate: ruff/format/line-cap zero on Phase 7 modules | gate green | todo
-T-0406 | 7 | qa | Run gate: pytest coverage ≥85% on measure/plots/analysis | coverage ≥85% | todo
-T-0407 | 7 | plot | All plots: fixed matplotlib backend (Agg) + seeded layout (no flakes) | tests deterministic | todo
-T-0408 | 7 | plot | All plots: read ONLY from results/*.json (single source of truth) | tests assert source | todo
-T-0409 | 7 | plot | tokens_per_sec.py: annotate ~1-3 tok/s AirLLM regime | test passes | todo
-T-0410 | 7 | plot | peak_vram.py: annotate impossible→single-layer drop | test passes | todo
-T-0411 | 7 | plot | ttft_vs_tpot.py: annotate prefill=compute / decode=memory | test passes | todo
-T-0412 | 7 | plot | quant_tradeoff.py: annotate red-line crossing point | test passes | todo
-T-0413 | 7 | roof | roofline.py: KV-cache bytes included in decode AI denominator + test | test passes | todo
-T-0414 | 7 | roof | roofline_plot.py: shade memory-bound vs compute-bound regions + test | test passes | todo
-T-0415 | 7 | meas | aggregate.py: fail loudly if a scenario ledger missing + test | test passes | todo
-T-0416 | 7 | meas | aggregate.py: round/format units consistently (ms, GB, tok/s) + test | test passes | todo
-T-0417 | 7 | tables | metrics_table.py: mark OOM baseline row distinctly + test | test passes | todo
-T-0418 | 7 | tables | metrics_table.py: emit machine-readable reports/metrics.csv too + test | test passes | todo
-T-0419 | 7 | plot | tests/unit/test_plot_fixtures.py — all plots run on sample ledgers | tests pass | todo
-T-0420 | 7 | roof | reports/ROOFLINE.md — explain ridge ≈203, AI per phase | report present | todo
-T-0421 | 7 | meas | tests/integration/test_metrics_pipeline.py — ledger→table→figures (mocked) | test passes | todo
-T-0422 | 7 | plot | plots/__init__ exports + public surface | imports clean | todo
-T-0423 | 7 | meas | measure/runtime.py: power from config watts (T4 ~70W) + test | test passes | todo
-T-0424 | 7 | tables | metrics_table.py: numbers byte-match ledger (no rounding drift) + test | test passes | todo
-T-0425 | 7 | roof | roofline.py: model FLOPs estimate (2·params·tokens) + test | test passes | todo
-T-0426 | 7 | plot | Figure DPI/size standardized across all plots + test | tests pass | todo
-T-0427 | 7 | report | reports/METRICS.md — tie each metric to a lecture concept | section present | todo
-T-0428 | 7 | docs | docs/prompts/007_phase7_metrics.md prompt log | file present | todo
-T-0429 | 7 | ledger | Update docs/TODO.md statuses for completed Phase 7 tasks | statuses current | todo
-T-0430 | 7 | git | Commit Phase 7 measurement harness + figures (conventional commit) | committed; CI green | todo
+T-0351 | 7 | meas | tests/unit/test_ttft.py — failing test for TTFT measurement (red) | test fails | done
+T-0352 | 7 | meas | src/cosmos77_ex05/measure/ttft.py — time-to-first-token from prefill (green) | test passes | done
+T-0353 | 7 | meas | ttft.py: refactor + docstrings + type hints | ruff clean | done
+T-0354 | 7 | meas | tests/unit/test_tpot.py — failing test for TPOT/ITL measurement (red) | test fails | done
+T-0355 | 7 | meas | src/cosmos77_ex05/measure/tpot.py — mean inter-token latency from decode (green) | test passes | done
+T-0356 | 7 | meas | tpot.py: ITL distribution (p50/p95) helper + test | test passes | done
+T-0357 | 7 | meas | tpot.py: refactor + docstrings + type hints | ruff clean | done
+T-0358 | 7 | meas | tests/unit/test_throughput.py — failing test for tokens/sec (red) | test fails | done
+T-0359 | 7 | meas | src/cosmos77_ex05/measure/throughput.py — tokens / total_decode_time (green) | test passes | done
+T-0360 | 7 | meas | throughput.py: refactor + docstrings + type hints | ruff clean | done
+T-0361 | 7 | meas | tests/unit/test_peakmem.py — failing test for peak VRAM+RAM aggregation (red) | test fails | done
+T-0362 | 7 | meas | src/cosmos77_ex05/measure/peakmem.py — peak VRAM + peak RAM collation (green) | test passes | done
+T-0363 | 7 | meas | peakmem.py: refactor + docstrings + type hints | ruff clean | done
+T-0364 | 7 | meas | tests/unit/test_runtime.py — failing test for total runtime + est. power (red) | test fails | done
+T-0365 | 7 | meas | src/cosmos77_ex05/measure/runtime.py — total runtime + watts×time energy (green) | test passes | done
+T-0366 | 7 | meas | runtime.py: refactor + docstrings + type hints | ruff clean | done
+T-0367 | 7 | meas | tests/unit/test_metric_aggregate.py — failing test for per-scenario rollup (red) | test fails | done
+T-0368 | 7 | meas | src/cosmos77_ex05/measure/aggregate.py — load all results/*.json → table rows (green) | test passes | done
+T-0369 | 7 | meas | aggregate.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0370 | 7 | meas | measure/__init__ exports + public surface | imports clean | done
+T-0371 | 7 | tables | tests/unit/test_metrics_table.py — failing test for METRICS.md generator (red) | test fails | done
+T-0372 | 7 | tables | src/cosmos77_ex05/report/metrics_table.py — render reports/METRICS.md from ledger (green) | test passes | done
+T-0373 | 7 | tables | metrics_table.py: columns TTFT/TPOT/tok-s/peakVRAM/peakRAM/runtime/power/quality | test passes | done
+T-0374 | 7 | tables | metrics_table.py: refactor + docstrings + type hints | ruff clean | done
+T-0375 | 7 | plot | tests/unit/test_plot_tokens.py — failing test for tokens_per_sec figure (red) | test fails | done
+T-0376 | 7 | plot | src/cosmos77_ex05/plots/tokens_per_sec.py — bar chart per scenario (green) | test passes | done
+T-0377 | 7 | plot | tokens_per_sec.py: save figures/tokens_per_sec.png deterministically | test passes | done
+T-0378 | 7 | plot | tokens_per_sec.py: refactor + docstrings + type hints | ruff clean | done
+T-0379 | 7 | plot | tests/unit/test_plot_vram.py — failing test for peak_vram figure (red) | test fails | done
+T-0380 | 7 | plot | src/cosmos77_ex05/plots/peak_vram.py — bar chart + 16 GB T4 line (green) | test passes | done
+T-0381 | 7 | plot | peak_vram.py: save figures/peak_vram.png; mark OOM baseline | test passes | done
+T-0382 | 7 | plot | peak_vram.py: refactor + docstrings + type hints | ruff clean | done
+T-0383 | 7 | plot | tests/unit/test_plot_ttft_tpot.py — failing test for ttft_vs_tpot figure (red) | test fails | done
+T-0384 | 7 | plot | src/cosmos77_ex05/plots/ttft_vs_tpot.py — grouped bars TTFT vs TPOT (green) | test passes | done
+T-0385 | 7 | plot | ttft_vs_tpot.py: save figures/ttft_vs_tpot.png | test passes | done
+T-0386 | 7 | plot | ttft_vs_tpot.py: refactor + docstrings + type hints | ruff clean | done
+T-0387 | 7 | plot | tests/unit/test_plot_quant.py — failing test for quant_tradeoff figure (red) | test fails | done
+T-0388 | 7 | plot | src/cosmos77_ex05/plots/quant_tradeoff.py — memory vs quality scatter (green) | test passes | done
+T-0389 | 7 | plot | quant_tradeoff.py: save figures/quant_tradeoff.png | test passes | done
+T-0390 | 7 | plot | quant_tradeoff.py: refactor + docstrings + type hints | ruff clean | done
+T-0391 | 7 | roof | tests/unit/test_roofline_math.py — failing test for arithmetic intensity (red) | test fails | done
+T-0392 | 7 | roof | src/cosmos77_ex05/analysis/roofline.py — FLOPs/byte per phase (green) | test passes | done
+T-0393 | 7 | roof | roofline.py: ridge point = peak_FLOPS / peak_BW (T4 ≈65T / ≈320 ⇒ ≈203) | test passes | done
+T-0394 | 7 | roof | roofline.py: decode AI≈1 ⇒ memory-bound classification | test passes | done
+T-0395 | 7 | roof | roofline.py: prefill higher AI ⇒ compute-bound classification | test passes | done
+T-0396 | 7 | roof | roofline.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0397 | 7 | roof | tests/unit/test_plot_roofline.py — failing test for roofline figure (red) | test fails | done
+T-0398 | 7 | roof | src/cosmos77_ex05/plots/roofline_plot.py — log-log roofline w/ ridge + points (green) | test passes | done
+T-0399 | 7 | roof | roofline_plot.py: plot prefill & decode operating points | test passes | done
+T-0400 | 7 | roof | roofline_plot.py: save figures/roofline.png | test passes | done
+T-0401 | 7 | roof | roofline_plot.py: refactor + docstrings + type hints | ruff clean | done
+T-0402 | 7 | meas | Wire measure+plots into SDK facade build_metrics() | SDK call works | done
+T-0403 | 7 | report | reports/METRICS.md — narrative around the generated table | report present | done
+T-0404 | 7 | report | reports/METRICS.md — embed all four metric figures | figures embedded | done
+T-0405 | 7 | qa | Run gate: ruff/format/line-cap zero on Phase 7 modules | gate green | done
+T-0406 | 7 | qa | Run gate: pytest coverage ≥85% on measure/plots/analysis | coverage ≥85% | done
+T-0407 | 7 | plot | All plots: fixed matplotlib backend (Agg) + seeded layout (no flakes) | tests deterministic | done
+T-0408 | 7 | plot | All plots: read ONLY from results/*.json (single source of truth) | tests assert source | done
+T-0409 | 7 | plot | tokens_per_sec.py: annotate ~1-3 tok/s AirLLM regime | test passes | done
+T-0410 | 7 | plot | peak_vram.py: annotate impossible→single-layer drop | test passes | done
+T-0411 | 7 | plot | ttft_vs_tpot.py: annotate prefill=compute / decode=memory | test passes | done
+T-0412 | 7 | plot | quant_tradeoff.py: annotate red-line crossing point | test passes | done
+T-0413 | 7 | roof | roofline.py: KV-cache bytes included in decode AI denominator + test | test passes | done
+T-0414 | 7 | roof | roofline_plot.py: shade memory-bound vs compute-bound regions + test | test passes | done
+T-0415 | 7 | meas | aggregate.py: fail loudly if a scenario ledger missing + test | test passes | done
+T-0416 | 7 | meas | aggregate.py: round/format units consistently (ms, GB, tok/s) + test | test passes | done
+T-0417 | 7 | tables | metrics_table.py: mark OOM baseline row distinctly + test | test passes | done
+T-0418 | 7 | tables | metrics_table.py: emit machine-readable reports/metrics.csv too + test | test passes | done
+T-0419 | 7 | plot | tests/unit/test_plot_fixtures.py — all plots run on sample ledgers | tests pass | done
+T-0420 | 7 | roof | reports/ROOFLINE.md — explain ridge ≈203, AI per phase | report present | done
+T-0421 | 7 | meas | tests/integration/test_metrics_pipeline.py — ledger→table→figures (mocked) | test passes | done
+T-0422 | 7 | plot | plots/__init__ exports + public surface | imports clean | done
+T-0423 | 7 | meas | measure/runtime.py: power from config watts (T4 ~70W) + test | test passes | done
+T-0424 | 7 | tables | metrics_table.py: numbers byte-match ledger (no rounding drift) + test | test passes | done
+T-0425 | 7 | roof | roofline.py: model FLOPs estimate (2·params·tokens) + test | test passes | done
+T-0426 | 7 | plot | Figure DPI/size standardized across all plots + test | tests pass | done
+T-0427 | 7 | report | reports/METRICS.md — tie each metric to a lecture concept | section present | done
+T-0428 | 7 | docs | docs/prompts/007_phase7_metrics.md prompt log | file present | done
+T-0429 | 7 | ledger | Update docs/TODO.md statuses for completed Phase 7 tasks | statuses current | done
+T-0430 | 7 | git | Commit Phase 7 measurement harness + figures (conventional commit) | committed; CI green | done
 
 ## Phase 8 — Economic break-even (On-Prem vs API vs Cloud GPU)
 
