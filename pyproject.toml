@@ -45,9 +45,10 @@ dependencies = [
 [project.optional-dependencies]
 experiment = [
     "airllm",
-    "transformers>=4.40",
+    "transformers==4.47.1",  # 4.48 removed the Qwen2 RoPE fallback AirLLM relies on
+    "optimum==1.24.0",       # last release shipping optimum.bettertransformer (AirLLM imports it)
     "torch",
-    "accelerate",
+    "accelerate>=0.26",
     "bitsandbytes",
     "huggingface-hub",
 ]
