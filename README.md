@@ -222,7 +222,29 @@ the environment was pinned.
 runs hit real limits (a Pascal P100 with no usable kernels; the `transformers`/AirLLM
 incompatibility), we fixed or documented them rather than faking a result.
 
-## 10. Self-assessment — we recommend **85**
+## 10. Limitations & future work (honesty)
+
+We report what we measured and flag what we did not:
+
+- **Quality is qualitative, not benchmarked.** All four outputs were coherent, so we did
+  not cross an accuracy "red line" at Q4 *for this prompt* — but a rigorous red line needs
+  a **perplexity / task-accuracy sweep** (e.g. a small MMLU or HellaSwag subset) across
+  precisions. That is the clearest next step.
+- **One prompt, 20 tokens.** We fixed the prompt and `max_new_tokens=20` to keep the
+  (very slow) run bounded and deterministic; throughput/TTFT would shift with longer
+  generations as the KV-cache grows. The *trends* (≈6× FP16→Q4, paging in ≈2 GB) are
+  robust, but absolute tok/s are point measurements.
+- **Free-tier variability.** Kaggle handed out P100s and T4s non-deterministically; the
+  T4 numbers above are one run. AirLLM is in maintenance mode, so the version pins in the
+  reproducibility log are load-bearing.
+- **AirLLM is for feasibility, not serving.** At ~0.04 tok/s nobody serves this in
+  production — the experiment's value is *understanding the mechanism and its economics*,
+  which is exactly the assignment's point.
+- **Possible extensions** beyond our Pareto: a 7B-vs-14B-vs-32B size sweep, a QLoRA
+  (NF4 + LoRA) fine-tune demo, and a CPU-vs-GPU-vs-AirLLM three-way are scaffolded in
+  `docs/PRD_extensions.md`.
+
+## 11. Self-assessment — we recommend **85**
 
 The project documents the hardware and justifies the model with the param→memory math
 (D1); demonstrates the FP16 OOM (D2); makes the same model run with AirLLM (D3) and a
