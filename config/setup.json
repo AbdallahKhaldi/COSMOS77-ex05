@@ -8,7 +8,7 @@
     "max_new_tokens": 20,
     "prompt": "Explain the attention mechanism in transformers.",
     "quant_levels": ["fp16_baseline", "airllm_none", "airllm_8bit", "airllm_4bit"],
-    "layer_shards_saving_path": "/kaggle/working/shards",
+    "layer_shards_saving_path": "/kaggle/temp/shards",
     "max_seq_len": 128
   },
   "hardware_assumptions": {

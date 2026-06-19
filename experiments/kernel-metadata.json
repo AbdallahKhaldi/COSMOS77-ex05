@@ -1,0 +1,13 @@
+{
+  "id": "abdallahkhaldi07/cosmos77-ex05-airllm",
+  "title": "COSMOS77-ex05 AirLLM Benchmark",
+  "code_file": "airllm_benchmark.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
