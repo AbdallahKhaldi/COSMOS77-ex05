@@ -18,10 +18,21 @@ from cosmos77_ex05.shared.gatekeeper import Gatekeeper
 class SDK:
     """All business logic for the AirLLM benchmarking + analysis pipeline."""
 
-    def __init__(self, config: Config | None = None, gatekeeper: Gatekeeper | None = None) -> None:
+    def __init__(
+        self,
+        config: Config | None = None,
+        gatekeeper: Gatekeeper | None = None,
+        results_dir: Path | str | None = None,
+    ) -> None:
         self.config = config or Config()
-        results_dir = self.repo_root / self.config.paths().get("results_dir", "results")
-        self.gatekeeper = gatekeeper or Gatekeeper(results_dir)
+        # results_dir override lets the Kaggle notebook write the ledger DIRECTLY to
+        # the captured output dir (/kaggle/working/results) so every record survives
+        # even if a later stage crashes.
+        if results_dir is not None:
+            self.results_dir = Path(results_dir)
+        else:
+            self.results_dir = self.repo_root / self.config.paths().get("results_dir", "results")
+        self.gatekeeper = gatekeeper or Gatekeeper(self.results_dir)
 
     @property
     def repo_root(self) -> Path:
@@ -33,25 +44,60 @@ class SDK:
         from cosmos77_ex05.hardware.model_math import justify
         from cosmos77_ex05.hardware.spec import capture_spec
 
-        results_dir = self.repo_root / self.config.paths().get("results_dir", "results")
-        spec = capture_spec(results_dir / "hardware.json")
+        spec = capture_spec(self.results_dir / "hardware.json")
         experiment = self.config.experiment()
         params = float(experiment.get("model_params_billions", 14.7)) * 1e9
         vram = spec.get("gpu", {}).get("vram_gb") or float(experiment.get("target_vram_gb", 16))
         math = justify(experiment.get("model_id", "Qwen/Qwen2.5-14B-Instruct"), params, vram)
         return {"spec": spec, "model_math": math}
 
-    def run_baseline(self) -> Any:
-        """Run the naive FP16 direct load (expected OOM) (Phase 4)."""
-        raise NotImplementedError("run_baseline lands in Phase 4")
+    def run_baseline(self) -> dict[str, Any]:
+        """Run the naive FP16 direct load (expected OOM) and record fp16_baseline (D2)."""
+        from cosmos77_ex05.runners.baseline import run_fp16_baseline
 
-    def run_airllm(self) -> Any:
-        """Run the same model via AirLLM, layer-by-layer (Phase 5)."""
-        raise NotImplementedError("run_airllm lands in Phase 5")
+        exp = self.config.experiment()
+        params = float(exp.get("model_params_billions", 14.7)) * 1e9
+        vram = float(exp.get("target_vram_gb", 16))
+        metrics = run_fp16_baseline(exp["model_id"], exp["prompt"], params, vram)
+        self.gatekeeper.record("fp16_baseline", metrics)
+        return metrics
 
-    def run_quant_sweep(self) -> Any:
-        """Run the quantization sweep FP16/Q8/Q4 (Phase 6)."""
-        raise NotImplementedError("run_quant_sweep lands in Phase 6")
+    def run_airllm(self) -> dict[str, Any]:
+        """Run the same model via AirLLM, layer-by-layer, and record airllm_none (D3)."""
+        from cosmos77_ex05.runners.airllm_run import run_airllm
+
+        exp = self.config.experiment()
+        metrics = run_airllm(
+            exp["model_id"],
+            exp["prompt"],
+            int(exp["max_new_tokens"]),
+            exp["layer_shards_saving_path"],
+            self._watts(),
+            max_seq_len=int(exp.get("max_seq_len", 128)),
+        )
+        self.gatekeeper.record("airllm_none", metrics)
+        return metrics
+
+    def run_quant_sweep(self, levels: list[str] | None = None) -> dict[str, Any]:
+        """Run the quantization sweep (default 8bit + 4bit) and record each (D4)."""
+        from cosmos77_ex05.runners.quant_run import run_quant_sweep
+
+        exp = self.config.experiment()
+        results = run_quant_sweep(
+            exp["model_id"],
+            exp["prompt"],
+            int(exp["max_new_tokens"]),
+            exp["layer_shards_saving_path"],
+            levels or ["8bit", "4bit"],
+            self._watts(),
+        )
+        for level, metrics in results.items():
+            self.gatekeeper.record(f"airllm_{level}", metrics)
+        return results
+
+    def _watts(self) -> float:
+        """The configured GPU power draw used for the energy estimate."""
+        return float(self.config.hardware_assumptions().get("gpu_power_watts", 70))
 
     def measure(self) -> Any:
         """The measurement harness — TTFT/TPOT/throughput/peak mem (Phase 7)."""
