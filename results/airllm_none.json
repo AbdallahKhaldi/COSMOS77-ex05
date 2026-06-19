@@ -1,0 +1,17 @@
+{
+  "compression": "none",
+  "est_power_wh": 55.385239,
+  "mechanism": "layer-by-layer mmap (layer = page)",
+  "model_id": "Qwen/Qwen2.5-14B-Instruct",
+  "n_out": 20,
+  "output": "Explain the attention mechanism in transformers. The attention mechanism is a key component of transformer models, which are widely used for natural language processing (",
+  "peak_ram_gb": 4.787581,
+  "peak_vram_gb": 1.595391,
+  "prompt": "Explain the attention mechanism in transformers.",
+  "scenario": "airllm_none",
+  "success": true,
+  "throughput_tok_s": 0.007022,
+  "total_s": 2848.383695,
+  "tpot_ms": 142423.526723,
+  "ttft_s": 142.336688
+}

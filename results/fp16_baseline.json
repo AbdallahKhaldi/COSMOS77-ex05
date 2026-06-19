@@ -1,0 +1,17 @@
+{
+  "available_vram_gb": 16.0,
+  "bottleneck": "memory (VRAM capacity)",
+  "dtype": "fp16",
+  "error": "CUDA out of memory. Tried to allocate 136.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 102.81 MiB is free. Including non-PyTorch memory, this process has 14.46 GiB memory in use. Of the allocated memory 14.34 GiB is allocated by PyTorch, and 1.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stabl",
+  "error_type": "OutOfMemoryError",
+  "memory_gb": {
+    "fp16": 29.4,
+    "q4": 7.4,
+    "q8": 14.7
+  },
+  "model_id": "Qwen/Qwen2.5-14B-Instruct",
+  "note": "FP16 needs 29.4 GB > 16.0 GB VRAM -> OOM. Bottleneck is memory capacity, not compute.",
+  "requested_vram_gb": 29.4,
+  "scenario": "fp16_baseline",
+  "success": false
+}

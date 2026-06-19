@@ -1,0 +1,19 @@
+{
+  "compression": "4bit",
+  "est_power_wh": 9.493541,
+  "level": "4bit",
+  "mechanism": "layer-by-layer mmap (layer = page)",
+  "model_id": "Qwen/Qwen2.5-14B-Instruct",
+  "n_out": 20,
+  "output": "Explain the attention mechanism in transformers. The attention mechanism is a key component of the Transformer architecture, which has become one of the most influential",
+  "peak_ram_gb": 4.815229,
+  "peak_vram_gb": 3.153576,
+  "prompt": "Explain the attention mechanism in transformers.",
+  "quality_note": "25 words; captured verbatim for manual quality review (accuracy red line)",
+  "scenario": "airllm_4bit",
+  "success": true,
+  "throughput_tok_s": 0.040964,
+  "total_s": 488.239252,
+  "tpot_ms": 23294.021335,
+  "ttft_s": 45.652846
+}

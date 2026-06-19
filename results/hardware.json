@@ -1,17 +1,17 @@
 {
   "cpu": {
-    "model": "arm",
-    "cores_physical": 8,
-    "cores_logical": 8
+    "model": "x86_64",
+    "cores_physical": 2,
+    "cores_logical": 4
   },
-  "ram_gb": 17.2,
+  "ram_gb": 33.7,
   "gpu": {
-    "name": "none / CPU-only",
-    "vram_gb": null
+    "name": "Tesla T4",
+    "vram_gb": 15.6
   },
   "disk": {
-    "total_gb": 245.1,
-    "free_gb": 13.0
+    "total_gb": 8656.9,
+    "free_gb": 1182.8
   },
-  "platform": "macOS-26.3-arm64-arm-64bit"
+  "platform": "Linux-6.12.90+-x86_64-with-glibc2.35"
 }

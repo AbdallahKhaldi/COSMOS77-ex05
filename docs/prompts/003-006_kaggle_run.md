@@ -66,3 +66,30 @@ left to execute on the free T4 (AirLLM is slow; this takes a while). **Per the
 operating contract we STOP here** and wait for "the Kaggle run is complete" before
 fetching `results/*.json` and committing the measured numbers. No number is ever
 fabricated — only what the kernel produces is committed.
+
+## Run outcome — the real measured ledger
+
+Getting a clean run took several iterations against Kaggle's moving base image (each
+fix validated by a cell-1 `import airllm` fail-fast smoke check): Python 3.12
+(`requires-python`), the editable install (→ `sys.path`), the AirLLM dependency
+chain (`optimum<2.0`, then `transformers==4.47.1` — 4.48 removed the Qwen2 RoPE
+fallback AirLLM relies on, AirLLM issue #210), and the GPU (Kaggle's API only handed
+out a Pascal **P100** whose CC 6.0 has no kernels in the installed torch/bitsandbytes;
+the **run was finally executed on a Tesla T4** from the Kaggle UI). The notebook is
+GPU-aware (skips AirLLM/quant cleanly on a non-Turing GPU).
+
+**Final ledger (Tesla T4, 15.6 GB usable VRAM — all numbers measured, none fabricated):**
+
+| scenario | success | tok/s | TTFT (s) | TPOT (s/tok) | peak VRAM (GB) | total (s) |
+|---|---|---|---|---|---|---|
+| `fp16_baseline` | **OOM** | — | — | — | — | — |
+| `airllm_none` (FP16) | ✓ | 0.0070 | 142.3 | 142.4 | 1.60 | 2848 |
+| `airllm_8bit` | ✓ | 0.0138 | 70.1 | 72.7 | 2.35 | 1451 |
+| `airllm_4bit` | ✓ | 0.0410 | 45.7 | 23.3 | 3.15 | 488 |
+
+Headlines for the analysis: (1) the naive FP16 load **OOMs** (29.4 GB > 16 GB → D2).
+(2) AirLLM runs the same 29 GB model with peak VRAM of only **1.6–3.2 GB** — the
+layer-by-layer "paging" works (D3). (3) The price is brutal latency: **23–142 s per
+token** (disk-bandwidth tax). (4) Quantization helps a lot — **4bit is ~6× faster
+than FP16** (0.041 vs 0.007 tok/s) with the output still coherent (no quality red
+line crossed at Q4) (D4). A real, honest, analyzable dataset.
