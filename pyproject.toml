@@ -3,7 +3,9 @@ name = "cosmos77-ex05"
 version = "1.00"
 description = "Orchestration of AI Agents (203.3763) HW5: run a massive LLM (Qwen2.5-14B) on a free Kaggle T4 via AirLLM + bitsandbytes quantization, measure TTFT/TPOT/throughput/peak VRAM, and deliver an honest benchmarking + economic break-even report (vibe-coded with Claude Code)."
 readme = "README.md"
-requires-python = ">=3.11,<3.12"
+# Dev/CI pin 3.11 (.python-version); the upper bound stays open to 3.12 so the
+# package installs on the Kaggle T4 runtime (Python 3.12) during the experiment.
+requires-python = ">=3.11,<3.13"
 license = { text = "MIT" }
 authors = [
     { name = "Abdallah Khaldi", email = "abdallahkh12@icloud.com" },
@@ -22,6 +24,7 @@ keywords = [
 ]
 classifiers = [
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
