@@ -57,7 +57,7 @@ def test_capture_hardware_delegates(config, monkeypatch):
     assert captured["justify"][1] == pytest.approx(14.7e9)
 
 
-@pytest.mark.parametrize("method", ["measure", "economics", "report"])
+@pytest.mark.parametrize("method", ["measure", "report"])
 def test_unimplemented_stages_raise(config, method):
     with pytest.raises(NotImplementedError):
         getattr(SDK(config=config), method)()
@@ -67,15 +67,28 @@ def test_analyze_builds_tables_and_figures(config, monkeypatch):
     import cosmos77_ex05.analysis.plots as plots
     import cosmos77_ex05.analysis.roofline as roofline
     import cosmos77_ex05.analysis.tables as tables
+    import cosmos77_ex05.extensions.pareto as pareto
 
     sdk = SDK(config=config)
     sdk.gatekeeper.record("airllm_4bit", {"success": True, "throughput_tok_s": 0.041})
     monkeypatch.setattr(tables, "write_metrics_md", lambda led, p: p)
     monkeypatch.setattr(plots, "generate_all", lambda led, d: [d / "a.png"])
     monkeypatch.setattr(roofline, "plot_roofline", lambda led, d: d / "roofline.png")
+    monkeypatch.setattr(pareto, "plot_pareto", lambda led, d: d / "pareto.png")
     out = sdk.analyze()
     assert "airllm_4bit" in out["scenarios"]
-    assert len(out["figures"]) == 2
+    assert len(out["figures"]) == 3  # generate_all (1) + roofline + pareto
+
+
+def test_economics_builds_report_and_figure(config, monkeypatch):
+    import cosmos77_ex05.economics.breakeven_plot as bplot
+    import cosmos77_ex05.economics.report as report
+
+    monkeypatch.setattr(report, "write_economics_md", lambda cfg, led, p: p)
+    monkeypatch.setattr(bplot, "plot_breakeven", lambda cfg, **k: "figures/breakeven.png")
+    out = SDK(config=config).economics()
+    assert out["figure"] == "figures/breakeven.png"
+    assert "economics_md" in out
 
 
 def test_run_baseline_records_ledger(config, monkeypatch):

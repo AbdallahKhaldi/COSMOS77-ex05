@@ -104,8 +104,9 @@ class SDK:
         raise NotImplementedError("measurement happens in the runners on the T4, not on the Mac")
 
     def analyze(self) -> dict[str, Any]:
-        """Build the comparison tables + graphs + Roofline from the ledger (D6/D9)."""
+        """Build the comparison tables + graphs + Roofline + quant Pareto (D6/D9/D10)."""
         from cosmos77_ex05.analysis import plots, roofline, tables
+        from cosmos77_ex05.extensions import pareto
 
         ledger = self.gatekeeper.ledger()
         reports_dir = self.repo_root / self.config.paths().get("reports_dir", "reports")
@@ -113,11 +114,24 @@ class SDK:
         metrics_md = tables.write_metrics_md(ledger, reports_dir / "METRICS.md")
         figs = list(plots.generate_all(ledger, figures_dir))
         figs.append(roofline.plot_roofline(ledger, figures_dir))
+        figs.append(pareto.plot_pareto(ledger, figures_dir))
         return {"metrics_md": metrics_md, "figures": figs, "scenarios": list(ledger)}
 
-    def economics(self) -> Any:
-        """The On-Prem vs API vs Cloud-GPU break-even report (Phase 8)."""
-        raise NotImplementedError("economics lands in Phase 8")
+    def economics(self) -> dict[str, Any]:
+        """The On-Prem vs API vs Cloud-GPU break-even report + figure (D7)."""
+        from cosmos77_ex05.economics import breakeven_plot, report
+
+        ledger = self.gatekeeper.ledger()
+        reports_dir = self.repo_root / self.config.paths().get("reports_dir", "reports")
+        figures_dir = self.repo_root / self.config.paths().get("figures_dir", "figures")
+        econ_md = report.write_economics_md(self.config, ledger, reports_dir / "ECONOMICS.md")
+        fig = breakeven_plot.plot_breakeven(
+            self.config,
+            provider=report._REPORT_PROVIDER,
+            out_dir=figures_dir,
+            **report._REPORT_REQUEST,
+        )
+        return {"economics_md": econ_md, "figure": fig}
 
     def report(self) -> Any:
         """Assemble the README technical report (Phase 10)."""

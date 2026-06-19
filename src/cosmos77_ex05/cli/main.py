@@ -60,6 +60,11 @@ def _dispatch(command: str) -> int:
         for fig in out["figures"]:
             print(f"figure: {fig}")
         return 0
+    if command == "economics":
+        out = sdk.economics()
+        print(f"wrote {out['economics_md']}")
+        print(f"figure: {out['figure']}")
+        return 0
     print(f"`{command}` is not wired yet — it lands in its phase (see docs/TODO.md).")
     return 0
 
