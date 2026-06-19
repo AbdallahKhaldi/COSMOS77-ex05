@@ -1,0 +1,17 @@
+{
+  "cpu": {
+    "model": "arm",
+    "cores_physical": 8,
+    "cores_logical": 8
+  },
+  "ram_gb": 17.2,
+  "gpu": {
+    "name": "none / CPU-only",
+    "vram_gb": null
+  },
+  "disk": {
+    "total_gb": 245.1,
+    "free_gb": 13.0
+  },
+  "platform": "macOS-26.3-arm64-arm-64bit"
+}

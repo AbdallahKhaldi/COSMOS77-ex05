@@ -80,96 +80,96 @@ T-0060 | 1 | git | Commit Phase 1 docs (conventional commit, CI green) | committ
 
 ## Phase 2 — Shared infra + hardware capture + measurement ledger + economics model
 
-T-0061 | 2 | infra | tests/unit/test_gatekeeper.py — failing test for ledger write contract (red) | test fails | todo
-T-0062 | 2 | infra | src/cosmos77_ex05/shared/gatekeeper.py — minimal write_result (green) | test passes | todo
-T-0063 | 2 | infra | gatekeeper: atomic JSON write + schema validation | test passes | todo
-T-0064 | 2 | infra | gatekeeper: refactor for ≤150 lines, extract schema module | line-cap 0; tests green | todo
-T-0065 | 2 | infra | gatekeeper docstrings + type hints | mypy/ruff clean | todo
-T-0066 | 2 | infra | tests/unit/test_ledger_schema.py — failing test for results schema (red) | test fails | todo
-T-0067 | 2 | infra | src/cosmos77_ex05/shared/ledger_schema.py — Pydantic/TypedDict result model (green) | test passes | todo
-T-0068 | 2 | infra | ledger_schema: required fields (scenario, ttft, tpot, throughput, peak_vram, peak_ram, runtime, power, quality) | test passes | todo
-T-0069 | 2 | infra | ledger_schema: refactor + docstrings + type hints | ruff clean | todo
-T-0070 | 2 | infra | tests/unit/test_config_loader.py — failing test for config/setup.json loader (red) | test fails | todo
-T-0071 | 2 | infra | src/cosmos77_ex05/shared/config.py — load_setup() (green) | test passes | todo
-T-0072 | 2 | infra | config.py: load_pricing() + load_logging_config() | test passes | todo
-T-0073 | 2 | infra | config.py: env override + .env loading (no secrets in code) | test passes | todo
-T-0074 | 2 | infra | config.py: refactor + docstrings + type hints | ruff clean | todo
-T-0075 | 2 | infra | tests/unit/test_paths.py — failing test for path resolver (red) | test fails | todo
-T-0076 | 2 | infra | src/cosmos77_ex05/shared/paths.py — repo-root-relative path helpers (green) | test passes | todo
-T-0077 | 2 | infra | paths.py: results/ figures/ reports/ data/ shards/ accessors | test passes | todo
-T-0078 | 2 | infra | paths.py: refactor + docstrings + type hints | ruff clean | todo
-T-0079 | 2 | infra | tests/unit/test_logging.py — failing test for structured logger (red) | test fails | todo
-T-0080 | 2 | infra | src/cosmos77_ex05/shared/log.py — get_logger() from logging_config.json (green) | test passes | todo
-T-0081 | 2 | infra | log.py: refactor + docstrings + type hints | ruff clean | todo
-T-0082 | 2 | infra | tests/unit/test_seed.py — failing test for deterministic seeding (red) | test fails | todo
-T-0083 | 2 | infra | src/cosmos77_ex05/shared/seed.py — seed random/np/torch (green) | test passes | todo
-T-0084 | 2 | infra | seed.py: refactor + docstrings + type hints | ruff clean | todo
-T-0085 | 2 | hw | tests/unit/test_hw_spec.py — failing test for hardware spec capture (red) | test fails | todo
-T-0086 | 2 | hw | src/cosmos77_ex05/hardware/spec.py — capture CPU/cores/RAM (mocked) (green) | test passes | todo
-T-0087 | 2 | hw | spec.py: capture GPU name/VRAM via mocked torch.cuda | test passes | todo
-T-0088 | 2 | hw | spec.py: capture disk free + bandwidth assumption fields | test passes | todo
-T-0089 | 2 | hw | spec.py: write results/hardware.json via gatekeeper | test passes | todo
-T-0090 | 2 | hw | spec.py: refactor for ≤150 lines, split capture vs serialize | line-cap 0 | todo
-T-0091 | 2 | hw | spec.py: docstrings + type hints | ruff clean | todo
-T-0092 | 2 | hw | tests/unit/test_model_math.py — failing test for param→memory math (red) | test fails | todo
-T-0093 | 2 | hw | src/cosmos77_ex05/hardware/model_math.py — params × bytes_per_param (green) | test passes | todo
-T-0094 | 2 | hw | model_math.py: FP16=2, Q8=1, Q4=0.5 byte tables + GB conversion | test passes | todo
-T-0095 | 2 | hw | model_math.py: fits_in_vram() predicate vs T4 16 GB | test passes | todo
-T-0096 | 2 | hw | model_math.py: OOM ratio (29.4/16 ≈ 1.8×) helper | test passes | todo
-T-0097 | 2 | hw | model_math.py: KV-cache size estimate (layers × heads × dim × seq × 2) | test passes | todo
-T-0098 | 2 | hw | model_math.py: refactor + docstrings + type hints | ruff clean | todo
-T-0099 | 2 | hw | tests/unit/test_hardware_fixture.py — fixture results/hardware.sample.json | fixture loads | todo
-T-0100 | 2 | hw | Wire hardware.spec + model_math into SDK facade method capture_hardware() | SDK call works | todo
-T-0101 | 2 | econ | tests/unit/test_capex.py — failing test for On-Prem CAPEX amortisation (red) | test fails | todo
-T-0102 | 2 | econ | src/cosmos77_ex05/economics/capex.py — hardware cost / amortisation window (green) | test passes | todo
-T-0103 | 2 | econ | capex.py: refactor + docstrings + type hints | ruff clean | todo
-T-0104 | 2 | econ | tests/unit/test_opex.py — failing test for electricity OPEX (red) | test fails | todo
-T-0105 | 2 | econ | src/cosmos77_ex05/economics/opex.py — watts × hours × $/kWh (green) | test passes | todo
-T-0106 | 2 | econ | opex.py: refactor + docstrings + type hints | ruff clean | todo
-T-0107 | 2 | econ | tests/unit/test_api_cost.py — failing test for API token cost (red) | test fails | todo
-T-0108 | 2 | econ | src/cosmos77_ex05/economics/api_cost.py — input/output tokens × price (green) | test passes | todo
-T-0109 | 2 | econ | api_cost.py: prompt-caching discount on cached input tokens | test passes | todo
-T-0110 | 2 | econ | api_cost.py: refactor + docstrings + type hints | ruff clean | todo
-T-0111 | 2 | econ | tests/unit/test_cloud_gpu.py — failing test for cloud GPU $/hr cost (red) | test fails | todo
-T-0112 | 2 | econ | src/cosmos77_ex05/economics/cloud_gpu.py — $/hr × runtime model (green) | test passes | todo
-T-0113 | 2 | econ | cloud_gpu.py: refactor + docstrings + type hints | ruff clean | todo
-T-0114 | 2 | econ | tests/unit/test_breakeven.py — failing test for crossover volume (red) | test fails | todo
-T-0115 | 2 | econ | src/cosmos77_ex05/economics/breakeven.py — On-Prem vs API crossover solve (green) | test passes | todo
-T-0116 | 2 | econ | breakeven.py: cumulative-cost curves over token volume | test passes | todo
-T-0117 | 2 | econ | breakeven.py: caching-shifted API line second crossover | test passes | todo
-T-0118 | 2 | econ | breakeven.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0119 | 2 | econ | economics fixture: config/pricing.sample.json + expected curves | fixture loads | todo
-T-0120 | 2 | econ | Wire economics modules into SDK facade method run_economics() | SDK call works | todo
-T-0121 | 2 | infra | tests/unit/test_power_est.py — failing test for power estimate (red) | test fails | todo
-T-0122 | 2 | infra | src/cosmos77_ex05/shared/power.py — est. energy = watts × runtime (green) | test passes | todo
-T-0123 | 2 | infra | power.py: refactor + docstrings + type hints | ruff clean | todo
-T-0124 | 2 | infra | tests/unit/test_quality_score.py — failing test for qualitative quality tag (red) | test fails | todo
-T-0125 | 2 | infra | src/cosmos77_ex05/shared/quality.py — quality label vs reference output (green) | test passes | todo
-T-0126 | 2 | infra | quality.py: refactor + docstrings + type hints | ruff clean | todo
-T-0127 | 2 | infra | tests/unit/test_units.py — failing test for unit conversions (bytes↔GB, s↔ms) (red) | test fails | todo
-T-0128 | 2 | infra | src/cosmos77_ex05/shared/units.py — conversion helpers (green) | test passes | todo
-T-0129 | 2 | infra | units.py: refactor + docstrings + type hints | ruff clean | todo
-T-0130 | 2 | qa | Run gate: ruff check/format zero on Phase 2 modules | gate green | todo
-T-0131 | 2 | qa | Run gate: check_line_cap.py zero on Phase 2 modules | gate green | todo
-T-0132 | 2 | qa | Run gate: pytest coverage ≥85% on shared/hardware/economics | coverage ≥85% | todo
-T-0133 | 2 | report | reports/hardware.md draft from results/hardware.json | report present | todo
-T-0134 | 2 | report | reports/ECONOMICS.md skeleton (assumptions table placeholder) | skeleton present | todo
-T-0135 | 2 | docs | docs/prompts/002_phase2_infra.md prompt log | file present | todo
-T-0136 | 2 | ledger | Update docs/TODO.md statuses for completed Phase 2 tasks | statuses current | todo
-T-0137 | 2 | git | Commit Phase 2 shared infra (conventional commit) | committed; CI green | todo
-T-0138 | 2 | infra | gatekeeper: reject write if required field missing (negative test) | test passes | todo
-T-0139 | 2 | infra | gatekeeper: append-only audit log of ledger writes | test passes | todo
-T-0140 | 2 | hw | model_math.py: activation memory estimate for prefill batch | test passes | todo
-T-0141 | 2 | hw | model_math.py: CUDA context overhead constant + total VRAM budget | test passes | todo
-T-0142 | 2 | econ | breakeven.py: privacy/security weight annotation field | test passes | todo
-T-0143 | 2 | econ | api_cost.py: per-model price table from pricing.json | test passes | todo
-T-0144 | 2 | infra | tests/integration/test_ledger_roundtrip.py — write→read→validate | test passes | todo
-T-0145 | 2 | infra | shared/__init__ exports + public API surface frozen | imports clean | todo
-T-0146 | 2 | qa | mypy/pyright type-check pass on Phase 2 (if configured) | type-check clean | todo
-T-0147 | 2 | hw | spec.py: graceful CPU-only fallback (no CUDA) path + test | test passes | todo
-T-0148 | 2 | econ | opex.py: PUE / cooling overhead factor (optional) + test | test passes | todo
-T-0149 | 2 | econ | cloud_gpu.py: spot vs on-demand price variants + test | test passes | todo
-T-0150 | 2 | ledger | Verify all Phase 2 results write to results/*.json deterministically | ledger deterministic | todo
+T-0061 | 2 | infra | tests/unit/test_gatekeeper.py — failing test for ledger write contract (red) | test fails | done
+T-0062 | 2 | infra | src/cosmos77_ex05/shared/gatekeeper.py — minimal write_result (green) | test passes | done
+T-0063 | 2 | infra | gatekeeper: atomic JSON write + schema validation | test passes | done
+T-0064 | 2 | infra | gatekeeper: refactor for ≤150 lines, extract schema module | line-cap 0; tests green | done
+T-0065 | 2 | infra | gatekeeper docstrings + type hints | mypy/ruff clean | done
+T-0066 | 2 | infra | tests/unit/test_ledger_schema.py — failing test for results schema (red) | test fails | done
+T-0067 | 2 | infra | src/cosmos77_ex05/shared/ledger_schema.py — Pydantic/TypedDict result model (green) | test passes | done
+T-0068 | 2 | infra | ledger_schema: required fields (scenario, ttft, tpot, throughput, peak_vram, peak_ram, runtime, power, quality) | test passes | done
+T-0069 | 2 | infra | ledger_schema: refactor + docstrings + type hints | ruff clean | done
+T-0070 | 2 | infra | tests/unit/test_config_loader.py — failing test for config/setup.json loader (red) | test fails | done
+T-0071 | 2 | infra | src/cosmos77_ex05/shared/config.py — load_setup() (green) | test passes | done
+T-0072 | 2 | infra | config.py: load_pricing() + load_logging_config() | test passes | done
+T-0073 | 2 | infra | config.py: env override + .env loading (no secrets in code) | test passes | done
+T-0074 | 2 | infra | config.py: refactor + docstrings + type hints | ruff clean | done
+T-0075 | 2 | infra | tests/unit/test_paths.py — failing test for path resolver (red) | test fails | done
+T-0076 | 2 | infra | src/cosmos77_ex05/shared/paths.py — repo-root-relative path helpers (green) | test passes | done
+T-0077 | 2 | infra | paths.py: results/ figures/ reports/ data/ shards/ accessors | test passes | done
+T-0078 | 2 | infra | paths.py: refactor + docstrings + type hints | ruff clean | done
+T-0079 | 2 | infra | tests/unit/test_logging.py — failing test for structured logger (red) | test fails | done
+T-0080 | 2 | infra | src/cosmos77_ex05/shared/log.py — get_logger() from logging_config.json (green) | test passes | done
+T-0081 | 2 | infra | log.py: refactor + docstrings + type hints | ruff clean | done
+T-0082 | 2 | infra | tests/unit/test_seed.py — failing test for deterministic seeding (red) | test fails | done
+T-0083 | 2 | infra | src/cosmos77_ex05/shared/seed.py — seed random/np/torch (green) | test passes | done
+T-0084 | 2 | infra | seed.py: refactor + docstrings + type hints | ruff clean | done
+T-0085 | 2 | hw | tests/unit/test_hw_spec.py — failing test for hardware spec capture (red) | test fails | done
+T-0086 | 2 | hw | src/cosmos77_ex05/hardware/spec.py — capture CPU/cores/RAM (mocked) (green) | test passes | done
+T-0087 | 2 | hw | spec.py: capture GPU name/VRAM via mocked torch.cuda | test passes | done
+T-0088 | 2 | hw | spec.py: capture disk free + bandwidth assumption fields | test passes | done
+T-0089 | 2 | hw | spec.py: write results/hardware.json via gatekeeper | test passes | done
+T-0090 | 2 | hw | spec.py: refactor for ≤150 lines, split capture vs serialize | line-cap 0 | done
+T-0091 | 2 | hw | spec.py: docstrings + type hints | ruff clean | done
+T-0092 | 2 | hw | tests/unit/test_model_math.py — failing test for param→memory math (red) | test fails | done
+T-0093 | 2 | hw | src/cosmos77_ex05/hardware/model_math.py — params × bytes_per_param (green) | test passes | done
+T-0094 | 2 | hw | model_math.py: FP16=2, Q8=1, Q4=0.5 byte tables + GB conversion | test passes | done
+T-0095 | 2 | hw | model_math.py: fits_in_vram() predicate vs T4 16 GB | test passes | done
+T-0096 | 2 | hw | model_math.py: OOM ratio (29.4/16 ≈ 1.8×) helper | test passes | done
+T-0097 | 2 | hw | model_math.py: KV-cache size estimate (layers × heads × dim × seq × 2) | test passes | done
+T-0098 | 2 | hw | model_math.py: refactor + docstrings + type hints | ruff clean | done
+T-0099 | 2 | hw | tests/unit/test_hardware_fixture.py — fixture results/hardware.sample.json | fixture loads | done
+T-0100 | 2 | hw | Wire hardware.spec + model_math into SDK facade method capture_hardware() | SDK call works | done
+T-0101 | 2 | econ | tests/unit/test_capex.py — failing test for On-Prem CAPEX amortisation (red) | test fails | done
+T-0102 | 2 | econ | src/cosmos77_ex05/economics/capex.py — hardware cost / amortisation window (green) | test passes | done
+T-0103 | 2 | econ | capex.py: refactor + docstrings + type hints | ruff clean | done
+T-0104 | 2 | econ | tests/unit/test_opex.py — failing test for electricity OPEX (red) | test fails | done
+T-0105 | 2 | econ | src/cosmos77_ex05/economics/opex.py — watts × hours × $/kWh (green) | test passes | done
+T-0106 | 2 | econ | opex.py: refactor + docstrings + type hints | ruff clean | done
+T-0107 | 2 | econ | tests/unit/test_api_cost.py — failing test for API token cost (red) | test fails | done
+T-0108 | 2 | econ | src/cosmos77_ex05/economics/api_cost.py — input/output tokens × price (green) | test passes | done
+T-0109 | 2 | econ | api_cost.py: prompt-caching discount on cached input tokens | test passes | done
+T-0110 | 2 | econ | api_cost.py: refactor + docstrings + type hints | ruff clean | done
+T-0111 | 2 | econ | tests/unit/test_cloud_gpu.py — failing test for cloud GPU $/hr cost (red) | test fails | done
+T-0112 | 2 | econ | src/cosmos77_ex05/economics/cloud_gpu.py — $/hr × runtime model (green) | test passes | done
+T-0113 | 2 | econ | cloud_gpu.py: refactor + docstrings + type hints | ruff clean | done
+T-0114 | 2 | econ | tests/unit/test_breakeven.py — failing test for crossover volume (red) | test fails | done
+T-0115 | 2 | econ | src/cosmos77_ex05/economics/breakeven.py — On-Prem vs API crossover solve (green) | test passes | done
+T-0116 | 2 | econ | breakeven.py: cumulative-cost curves over token volume | test passes | done
+T-0117 | 2 | econ | breakeven.py: caching-shifted API line second crossover | test passes | done
+T-0118 | 2 | econ | breakeven.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0119 | 2 | econ | economics fixture: config/pricing.sample.json + expected curves | fixture loads | done
+T-0120 | 2 | econ | Wire economics modules into SDK facade method run_economics() | SDK call works | done
+T-0121 | 2 | infra | tests/unit/test_power_est.py — failing test for power estimate (red) | test fails | done
+T-0122 | 2 | infra | src/cosmos77_ex05/shared/power.py — est. energy = watts × runtime (green) | test passes | done
+T-0123 | 2 | infra | power.py: refactor + docstrings + type hints | ruff clean | done
+T-0124 | 2 | infra | tests/unit/test_quality_score.py — failing test for qualitative quality tag (red) | test fails | done
+T-0125 | 2 | infra | src/cosmos77_ex05/shared/quality.py — quality label vs reference output (green) | test passes | done
+T-0126 | 2 | infra | quality.py: refactor + docstrings + type hints | ruff clean | done
+T-0127 | 2 | infra | tests/unit/test_units.py — failing test for unit conversions (bytes↔GB, s↔ms) (red) | test fails | done
+T-0128 | 2 | infra | src/cosmos77_ex05/shared/units.py — conversion helpers (green) | test passes | done
+T-0129 | 2 | infra | units.py: refactor + docstrings + type hints | ruff clean | done
+T-0130 | 2 | qa | Run gate: ruff check/format zero on Phase 2 modules | gate green | done
+T-0131 | 2 | qa | Run gate: check_line_cap.py zero on Phase 2 modules | gate green | done
+T-0132 | 2 | qa | Run gate: pytest coverage ≥85% on shared/hardware/economics | coverage ≥85% | done
+T-0133 | 2 | report | reports/hardware.md draft from results/hardware.json | report present | done
+T-0134 | 2 | report | reports/ECONOMICS.md skeleton (assumptions table placeholder) | skeleton present | done
+T-0135 | 2 | docs | docs/prompts/002_phase2_infra.md prompt log | file present | done
+T-0136 | 2 | ledger | Update docs/TODO.md statuses for completed Phase 2 tasks | statuses current | done
+T-0137 | 2 | git | Commit Phase 2 shared infra (conventional commit) | committed; CI green | done
+T-0138 | 2 | infra | gatekeeper: reject write if required field missing (negative test) | test passes | done
+T-0139 | 2 | infra | gatekeeper: append-only audit log of ledger writes | test passes | done
+T-0140 | 2 | hw | model_math.py: activation memory estimate for prefill batch | test passes | done
+T-0141 | 2 | hw | model_math.py: CUDA context overhead constant + total VRAM budget | test passes | done
+T-0142 | 2 | econ | breakeven.py: privacy/security weight annotation field | test passes | done
+T-0143 | 2 | econ | api_cost.py: per-model price table from pricing.json | test passes | done
+T-0144 | 2 | infra | tests/integration/test_ledger_roundtrip.py — write→read→validate | test passes | done
+T-0145 | 2 | infra | shared/__init__ exports + public API surface frozen | imports clean | done
+T-0146 | 2 | qa | mypy/pyright type-check pass on Phase 2 (if configured) | type-check clean | done
+T-0147 | 2 | hw | spec.py: graceful CPU-only fallback (no CUDA) path + test | test passes | done
+T-0148 | 2 | econ | opex.py: PUE / cooling overhead factor (optional) + test | test passes | done
+T-0149 | 2 | econ | cloud_gpu.py: spot vs on-demand price variants + test | test passes | done
+T-0150 | 2 | ledger | Verify all Phase 2 results write to results/*.json deterministically | ledger deterministic | done
 
 ## Phase 3 — Kaggle notebook + model download + AirLLM sharding scripts
 
