@@ -173,215 +173,215 @@ T-0150 | 2 | ledger | Verify all Phase 2 results write to results/*.json determi
 
 ## Phase 3 — Kaggle notebook + model download + AirLLM sharding scripts
 
-T-0151 | 3 | nb | experiments/airllm_benchmark.ipynb — notebook skeleton (markdown sections) | notebook opens | todo
-T-0152 | 3 | nb | Notebook cell: enable GPU + assert torch.cuda.is_available() | cell drafted | todo
-T-0153 | 3 | nb | Notebook cell: print hardware via nvidia-smi + capture to ledger | cell drafted | todo
-T-0154 | 3 | nb | Notebook cell: pip install airllm bitsandbytes accelerate (pinned) | cell drafted | todo
-T-0155 | 3 | nb | Notebook cell: load HF_TOKEN from Kaggle secrets (never hardcoded) | cell drafted | todo
-T-0156 | 3 | dl | tests/unit/test_downloader.py — failing test for model download wrapper (red) | test fails | todo
-T-0157 | 3 | dl | src/cosmos77_ex05/download/fetch.py — snapshot_download wrapper (mocked) (green) | test passes | todo
-T-0158 | 3 | dl | fetch.py: resume/retry on partial download + test | test passes | todo
-T-0159 | 3 | dl | fetch.py: verify Qwen2.5-14B-Instruct repo id + revision pin | test passes | todo
-T-0160 | 3 | dl | fetch.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0161 | 3 | dl | tests/unit/test_disk_guard.py — failing test for free-disk precheck (red) | test fails | todo
-T-0162 | 3 | dl | src/cosmos77_ex05/download/disk_guard.py — assert enough disk before download (green) | test passes | todo
-T-0163 | 3 | dl | disk_guard.py: refactor + docstrings + type hints | ruff clean | todo
-T-0164 | 3 | shard | tests/unit/test_sharder.py — failing test for per-layer SafeTensors split (red) | test fails | todo
-T-0165 | 3 | shard | src/cosmos77_ex05/shard/splitter.py — split checkpoint into per-layer shards (mocked) (green) | test passes | todo
-T-0166 | 3 | shard | splitter.py: name shards layer_NNN.safetensors (layer = page) | test passes | todo
-T-0167 | 3 | shard | splitter.py: write shard manifest JSON (layer→file→bytes) | test passes | todo
-T-0168 | 3 | shard | splitter.py: verify shard count == model layer count | test passes | todo
-T-0169 | 3 | shard | splitter.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0170 | 3 | shard | tests/unit/test_manifest.py — failing test for manifest schema (red) | test fails | todo
-T-0171 | 3 | shard | src/cosmos77_ex05/shard/manifest.py — manifest model + loader (green) | test passes | todo
-T-0172 | 3 | shard | manifest.py: refactor + docstrings + type hints | ruff clean | todo
-T-0173 | 3 | shard | tests/unit/test_mmap_loader.py — failing test for zero-copy mmap layer load (red) | test fails | todo
-T-0174 | 3 | shard | src/cosmos77_ex05/shard/mmap_loader.py — mmap a layer shard (mocked) (green) | test passes | todo
-T-0175 | 3 | shard | mmap_loader.py: evict-after-use (page replacement) hook + test | test passes | todo
-T-0176 | 3 | shard | mmap_loader.py: refactor + docstrings + type hints | ruff clean | todo
-T-0177 | 3 | nb | Notebook cell: call download.fetch (resumable) for Qwen2.5-14B | cell drafted | todo
-T-0178 | 3 | nb | Notebook cell: call shard.splitter to build per-layer shards | cell drafted | todo
-T-0179 | 3 | nb | Notebook cell: print shard manifest summary (count, total GB) | cell drafted | todo
-T-0180 | 3 | nb | Notebook cell: prompt-set definition (fixed prompts, seeded) | cell drafted | todo
-T-0181 | 3 | nb | Notebook markdown: explain layer=page / page-fault analogy inline | markdown present | todo
-T-0182 | 3 | exp | experiments/SETUP.md — reproducible Kaggle run instructions (GPU on, secret, run all) | doc present | todo
-T-0183 | 3 | exp | experiments/SETUP.md — Colab T4 documented fallback | fallback present | todo
-T-0184 | 3 | exp | experiments/SETUP.md — pinned package versions table | table present | todo
-T-0185 | 3 | dl | Wire download + shard into SDK facade prepare_model() | SDK call works | todo
-T-0186 | 3 | qa | Run gate: ruff/format/line-cap zero on Phase 3 modules | gate green | todo
-T-0187 | 3 | qa | Run gate: pytest coverage ≥85% on download/shard | coverage ≥85% | todo
-T-0188 | 3 | nb | Notebook: nbstripout / clear outputs before commit (no secrets) | outputs clean | todo
-T-0189 | 3 | nb | Notebook: parameterize scenarios from config/setup.json | cell drafted | todo
-T-0190 | 3 | shard | splitter.py: handle tied embeddings / shared weights correctly + test | test passes | todo
-T-0191 | 3 | shard | mmap_loader.py: dtype-aware load (FP16) + test | test passes | todo
-T-0192 | 3 | dl | fetch.py: allow_patterns to skip unused files (save disk) + test | test passes | todo
-T-0193 | 3 | dl | disk_guard.py: distinguish /kaggle/working vs /tmp quota + test | test passes | todo
-T-0194 | 3 | shard | manifest.py: checksum per shard for integrity + test | test passes | todo
-T-0195 | 3 | nb | Notebook cell: scenario loop scaffold (none/8bit/4bit) placeholder | cell drafted | todo
-T-0196 | 3 | report | reports/SHARDING.md — how layer shards map to pages | report present | todo
-T-0197 | 3 | docs | docs/prompts/003_phase3_notebook.md prompt log | file present | todo
-T-0198 | 3 | ledger | Update docs/TODO.md statuses for completed Phase 3 tasks | statuses current | todo
-T-0199 | 3 | git | Commit Phase 3 notebook + sharding scripts (conventional commit) | committed; CI green | todo
-T-0200 | 3 | exp | experiments/SETUP.md — troubleshooting (download stall, disk full, quota) | section present | todo
+T-0151 | 3 | nb | experiments/airllm_benchmark.ipynb — notebook skeleton (markdown sections) | notebook opens | done
+T-0152 | 3 | nb | Notebook cell: enable GPU + assert torch.cuda.is_available() | cell drafted | done
+T-0153 | 3 | nb | Notebook cell: print hardware via nvidia-smi + capture to ledger | cell drafted | done
+T-0154 | 3 | nb | Notebook cell: pip install airllm bitsandbytes accelerate (pinned) | cell drafted | done
+T-0155 | 3 | nb | Notebook cell: load HF_TOKEN from Kaggle secrets (never hardcoded) | cell drafted | done
+T-0156 | 3 | dl | tests/unit/test_downloader.py — failing test for model download wrapper (red) | test fails | done
+T-0157 | 3 | dl | src/cosmos77_ex05/download/fetch.py — snapshot_download wrapper (mocked) (green) | test passes | done
+T-0158 | 3 | dl | fetch.py: resume/retry on partial download + test | test passes | done
+T-0159 | 3 | dl | fetch.py: verify Qwen2.5-14B-Instruct repo id + revision pin | test passes | done
+T-0160 | 3 | dl | fetch.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0161 | 3 | dl | tests/unit/test_disk_guard.py — failing test for free-disk precheck (red) | test fails | done
+T-0162 | 3 | dl | src/cosmos77_ex05/download/disk_guard.py — assert enough disk before download (green) | test passes | done
+T-0163 | 3 | dl | disk_guard.py: refactor + docstrings + type hints | ruff clean | done
+T-0164 | 3 | shard | tests/unit/test_sharder.py — failing test for per-layer SafeTensors split (red) | test fails | done
+T-0165 | 3 | shard | src/cosmos77_ex05/shard/splitter.py — split checkpoint into per-layer shards (mocked) (green) | test passes | done
+T-0166 | 3 | shard | splitter.py: name shards layer_NNN.safetensors (layer = page) | test passes | done
+T-0167 | 3 | shard | splitter.py: write shard manifest JSON (layer→file→bytes) | test passes | done
+T-0168 | 3 | shard | splitter.py: verify shard count == model layer count | test passes | done
+T-0169 | 3 | shard | splitter.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0170 | 3 | shard | tests/unit/test_manifest.py — failing test for manifest schema (red) | test fails | done
+T-0171 | 3 | shard | src/cosmos77_ex05/shard/manifest.py — manifest model + loader (green) | test passes | done
+T-0172 | 3 | shard | manifest.py: refactor + docstrings + type hints | ruff clean | done
+T-0173 | 3 | shard | tests/unit/test_mmap_loader.py — failing test for zero-copy mmap layer load (red) | test fails | done
+T-0174 | 3 | shard | src/cosmos77_ex05/shard/mmap_loader.py — mmap a layer shard (mocked) (green) | test passes | done
+T-0175 | 3 | shard | mmap_loader.py: evict-after-use (page replacement) hook + test | test passes | done
+T-0176 | 3 | shard | mmap_loader.py: refactor + docstrings + type hints | ruff clean | done
+T-0177 | 3 | nb | Notebook cell: call download.fetch (resumable) for Qwen2.5-14B | cell drafted | done
+T-0178 | 3 | nb | Notebook cell: call shard.splitter to build per-layer shards | cell drafted | done
+T-0179 | 3 | nb | Notebook cell: print shard manifest summary (count, total GB) | cell drafted | done
+T-0180 | 3 | nb | Notebook cell: prompt-set definition (fixed prompts, seeded) | cell drafted | done
+T-0181 | 3 | nb | Notebook markdown: explain layer=page / page-fault analogy inline | markdown present | done
+T-0182 | 3 | exp | experiments/SETUP.md — reproducible Kaggle run instructions (GPU on, secret, run all) | doc present | done
+T-0183 | 3 | exp | experiments/SETUP.md — Colab T4 documented fallback | fallback present | done
+T-0184 | 3 | exp | experiments/SETUP.md — pinned package versions table | table present | done
+T-0185 | 3 | dl | Wire download + shard into SDK facade prepare_model() | SDK call works | done
+T-0186 | 3 | qa | Run gate: ruff/format/line-cap zero on Phase 3 modules | gate green | done
+T-0187 | 3 | qa | Run gate: pytest coverage ≥85% on download/shard | coverage ≥85% | done
+T-0188 | 3 | nb | Notebook: nbstripout / clear outputs before commit (no secrets) | outputs clean | done
+T-0189 | 3 | nb | Notebook: parameterize scenarios from config/setup.json | cell drafted | done
+T-0190 | 3 | shard | splitter.py: handle tied embeddings / shared weights correctly + test | test passes | done
+T-0191 | 3 | shard | mmap_loader.py: dtype-aware load (FP16) + test | test passes | done
+T-0192 | 3 | dl | fetch.py: allow_patterns to skip unused files (save disk) + test | test passes | done
+T-0193 | 3 | dl | disk_guard.py: distinguish /kaggle/working vs /tmp quota + test | test passes | done
+T-0194 | 3 | shard | manifest.py: checksum per shard for integrity + test | test passes | done
+T-0195 | 3 | nb | Notebook cell: scenario loop scaffold (none/8bit/4bit) placeholder | cell drafted | done
+T-0196 | 3 | report | reports/SHARDING.md — how layer shards map to pages | report present | done
+T-0197 | 3 | docs | docs/prompts/003_phase3_notebook.md prompt log | file present | done
+T-0198 | 3 | ledger | Update docs/TODO.md statuses for completed Phase 3 tasks | statuses current | done
+T-0199 | 3 | git | Commit Phase 3 notebook + sharding scripts (conventional commit) | committed; CI green | done
+T-0200 | 3 | exp | experiments/SETUP.md — troubleshooting (download stall, disk full, quota) | section present | done
 
 ## Phase 4 — FP16 baseline OOM runner
 
-T-0201 | 4 | base | tests/unit/test_fp16_runner.py — failing test for naive FP16 load (red) | test fails | todo
-T-0202 | 4 | base | src/cosmos77_ex05/baseline/fp16_runner.py — naive from_pretrained FP16 (mocked) (green) | test passes | todo
-T-0203 | 4 | base | fp16_runner.py: device_map none → full resident allocation path | test passes | todo
-T-0204 | 4 | base | fp16_runner.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0205 | 4 | base | tests/unit/test_oom_capture.py — failing test for OutOfMemoryError capture (red) | test fails | todo
-T-0206 | 4 | base | src/cosmos77_ex05/baseline/oom_capture.py — try/except torch.cuda.OutOfMemoryError (green) | test passes | todo
-T-0207 | 4 | base | oom_capture.py: record requested vs available VRAM bytes | test passes | todo
-T-0208 | 4 | base | oom_capture.py: classify failure (OOM vs unbearable slowness) | test passes | todo
-T-0209 | 4 | base | oom_capture.py: refactor + docstrings + type hints | ruff clean | todo
-T-0210 | 4 | base | tests/unit/test_baseline_ledger.py — failing test for fp16_baseline.json schema (red) | test fails | todo
-T-0211 | 4 | base | fp16_runner: write results/fp16_baseline.json via gatekeeper (green) | test passes | todo
-T-0212 | 4 | base | baseline ledger: include param→memory prediction (29.4 GB) field | test passes | todo
-T-0213 | 4 | base | baseline ledger: include captured error string + VRAM numbers | test passes | todo
-T-0214 | 4 | base | baseline ledger: bottleneck label = "memory (VRAM capacity)" | test passes | todo
-T-0215 | 4 | base | tests/unit/test_vram_probe.py — failing test for VRAM probe (red) | test fails | todo
-T-0216 | 4 | base | src/cosmos77_ex05/baseline/vram_probe.py — read total/free/used VRAM (mocked) (green) | test passes | todo
-T-0217 | 4 | base | vram_probe.py: peak VRAM tracker via max_memory_allocated (mocked) | test passes | todo
-T-0218 | 4 | base | vram_probe.py: refactor + docstrings + type hints | ruff clean | todo
-T-0219 | 4 | nb | Notebook cell: run FP16 baseline, expect OOM, screenshot the traceback | cell drafted | todo
-T-0220 | 4 | nb | Notebook cell: save OOM screenshot to figures/oom_screenshot.png | cell drafted | todo
-T-0221 | 4 | nb | Notebook markdown: explain why 14B FP16 OOMs a 16 GB T4 (param math) | markdown present | todo
-T-0222 | 4 | base | Wire fp16_runner into SDK facade run_baseline() | SDK call works | todo
-T-0223 | 4 | report | reports/baseline.md — narrate predicted vs captured OOM | report present | todo
-T-0224 | 4 | report | reports/baseline.md — tie to RQ-a (memory not compute) | section present | todo
-T-0225 | 4 | report | reports/baseline.md — embed OOM screenshot reference | reference present | todo
-T-0226 | 4 | qa | Run gate: ruff/format/line-cap zero on Phase 4 modules | gate green | todo
-T-0227 | 4 | qa | Run gate: pytest coverage ≥85% on baseline | coverage ≥85% | todo
-T-0228 | 4 | base | oom_capture.py: handle CPU-offload "fits but 0.x tok/s" slow path + test | test passes | todo
-T-0229 | 4 | base | fp16_runner.py: time-boxed abort if load exceeds budget + test | test passes | todo
-T-0230 | 4 | base | baseline ledger: runtime-to-failure field + test | test passes | todo
-T-0231 | 4 | base | vram_probe.py: reset_peak_memory_stats between probes + test | test passes | todo
-T-0232 | 4 | base | tests/unit/test_baseline_fixture.py — fixture results/fp16_baseline.sample.json | fixture loads | todo
-T-0233 | 4 | base | oom_capture.py: redact any path/token from error string + test | test passes | todo
-T-0234 | 4 | base | fp16_runner.py: deterministic prompt + seed for reproducibility + test | test passes | todo
-T-0235 | 4 | report | reports/baseline.md — requested-vs-available VRAM table | table present | todo
-T-0236 | 4 | report | reports/baseline.md — link to model_math 29.4 GB derivation | link present | todo
-T-0237 | 4 | nb | Notebook cell: free VRAM (del model; empty_cache) after baseline | cell drafted | todo
-T-0238 | 4 | base | baseline: assert OOM is the expected/honest outcome (negative result valid) | test passes | todo
-T-0239 | 4 | base | baseline/__init__ exports + public surface | imports clean | todo
-T-0240 | 4 | docs | docs/prompts/004_phase4_baseline.md prompt log | file present | todo
-T-0241 | 4 | ledger | Update docs/TODO.md statuses for completed Phase 4 tasks | statuses current | todo
-T-0242 | 4 | git | Commit Phase 4 baseline runner (conventional commit) | committed; CI green | todo
-T-0243 | 4 | base | tests/integration/test_baseline_pipeline.py — runner→ledger end-to-end (mocked) | test passes | todo
-T-0244 | 4 | base | vram_probe.py: cross-check probe vs nvidia-smi parse + test | test passes | todo
-T-0245 | 4 | base | oom_capture.py: structured failure taxonomy enum + test | test passes | todo
+T-0201 | 4 | base | tests/unit/test_fp16_runner.py — failing test for naive FP16 load (red) | test fails | done
+T-0202 | 4 | base | src/cosmos77_ex05/baseline/fp16_runner.py — naive from_pretrained FP16 (mocked) (green) | test passes | done
+T-0203 | 4 | base | fp16_runner.py: device_map none → full resident allocation path | test passes | done
+T-0204 | 4 | base | fp16_runner.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0205 | 4 | base | tests/unit/test_oom_capture.py — failing test for OutOfMemoryError capture (red) | test fails | done
+T-0206 | 4 | base | src/cosmos77_ex05/baseline/oom_capture.py — try/except torch.cuda.OutOfMemoryError (green) | test passes | done
+T-0207 | 4 | base | oom_capture.py: record requested vs available VRAM bytes | test passes | done
+T-0208 | 4 | base | oom_capture.py: classify failure (OOM vs unbearable slowness) | test passes | done
+T-0209 | 4 | base | oom_capture.py: refactor + docstrings + type hints | ruff clean | done
+T-0210 | 4 | base | tests/unit/test_baseline_ledger.py — failing test for fp16_baseline.json schema (red) | test fails | done
+T-0211 | 4 | base | fp16_runner: write results/fp16_baseline.json via gatekeeper (green) | test passes | done
+T-0212 | 4 | base | baseline ledger: include param→memory prediction (29.4 GB) field | test passes | done
+T-0213 | 4 | base | baseline ledger: include captured error string + VRAM numbers | test passes | done
+T-0214 | 4 | base | baseline ledger: bottleneck label = "memory (VRAM capacity)" | test passes | done
+T-0215 | 4 | base | tests/unit/test_vram_probe.py — failing test for VRAM probe (red) | test fails | done
+T-0216 | 4 | base | src/cosmos77_ex05/baseline/vram_probe.py — read total/free/used VRAM (mocked) (green) | test passes | done
+T-0217 | 4 | base | vram_probe.py: peak VRAM tracker via max_memory_allocated (mocked) | test passes | done
+T-0218 | 4 | base | vram_probe.py: refactor + docstrings + type hints | ruff clean | done
+T-0219 | 4 | nb | Notebook cell: run FP16 baseline, expect OOM, screenshot the traceback | cell drafted | done
+T-0220 | 4 | nb | Notebook cell: save OOM screenshot to figures/oom_screenshot.png | cell drafted | done
+T-0221 | 4 | nb | Notebook markdown: explain why 14B FP16 OOMs a 16 GB T4 (param math) | markdown present | done
+T-0222 | 4 | base | Wire fp16_runner into SDK facade run_baseline() | SDK call works | done
+T-0223 | 4 | report | reports/baseline.md — narrate predicted vs captured OOM | report present | done
+T-0224 | 4 | report | reports/baseline.md — tie to RQ-a (memory not compute) | section present | done
+T-0225 | 4 | report | reports/baseline.md — embed OOM screenshot reference | reference present | done
+T-0226 | 4 | qa | Run gate: ruff/format/line-cap zero on Phase 4 modules | gate green | done
+T-0227 | 4 | qa | Run gate: pytest coverage ≥85% on baseline | coverage ≥85% | done
+T-0228 | 4 | base | oom_capture.py: handle CPU-offload "fits but 0.x tok/s" slow path + test | test passes | done
+T-0229 | 4 | base | fp16_runner.py: time-boxed abort if load exceeds budget + test | test passes | done
+T-0230 | 4 | base | baseline ledger: runtime-to-failure field + test | test passes | done
+T-0231 | 4 | base | vram_probe.py: reset_peak_memory_stats between probes + test | test passes | done
+T-0232 | 4 | base | tests/unit/test_baseline_fixture.py — fixture results/fp16_baseline.sample.json | fixture loads | done
+T-0233 | 4 | base | oom_capture.py: redact any path/token from error string + test | test passes | done
+T-0234 | 4 | base | fp16_runner.py: deterministic prompt + seed for reproducibility + test | test passes | done
+T-0235 | 4 | report | reports/baseline.md — requested-vs-available VRAM table | table present | done
+T-0236 | 4 | report | reports/baseline.md — link to model_math 29.4 GB derivation | link present | done
+T-0237 | 4 | nb | Notebook cell: free VRAM (del model; empty_cache) after baseline | cell drafted | done
+T-0238 | 4 | base | baseline: assert OOM is the expected/honest outcome (negative result valid) | test passes | done
+T-0239 | 4 | base | baseline/__init__ exports + public surface | imports clean | done
+T-0240 | 4 | docs | docs/prompts/004_phase4_baseline.md prompt log | file present | done
+T-0241 | 4 | ledger | Update docs/TODO.md statuses for completed Phase 4 tasks | statuses current | done
+T-0242 | 4 | git | Commit Phase 4 baseline runner (conventional commit) | committed; CI green | done
+T-0243 | 4 | base | tests/integration/test_baseline_pipeline.py — runner→ledger end-to-end (mocked) | test passes | done
+T-0244 | 4 | base | vram_probe.py: cross-check probe vs nvidia-smi parse + test | test passes | done
+T-0245 | 4 | base | oom_capture.py: structured failure taxonomy enum + test | test passes | done
 
 ## Phase 5 — AirLLM runner (layer = page)
 
-T-0246 | 5 | air | tests/unit/test_airllm_runner.py — failing test for AirLLM model wrapper (red) | test fails | todo
-T-0247 | 5 | air | src/cosmos77_ex05/airllm/runner.py — AirLLMLlama2/AutoModel wrapper (mocked) (green) | test passes | todo
-T-0248 | 5 | air | runner.py: layer-by-layer streaming load (one layer resident) | test passes | todo
-T-0249 | 5 | air | runner.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0250 | 5 | air | tests/unit/test_layer_pager.py — failing test for layer pager (red) | test fails | todo
-T-0251 | 5 | air | src/cosmos77_ex05/airllm/layer_pager.py — load→use→evict per layer (green) | test passes | todo
-T-0252 | 5 | air | layer_pager.py: count page faults (one per layer per step) | test passes | todo
-T-0253 | 5 | air | layer_pager.py: mmap zero-copy mapping path + test | test passes | todo
-T-0254 | 5 | air | layer_pager.py: refactor + docstrings + type hints | ruff clean | todo
-T-0255 | 5 | air | tests/unit/test_airllm_generate.py — failing test for generate loop (red) | test fails | todo
-T-0256 | 5 | air | src/cosmos77_ex05/airllm/generate.py — prefill + decode loop (mocked) (green) | test passes | todo
-T-0257 | 5 | air | generate.py: prefill pass (GEMM) yields first token → TTFT hook | test passes | todo
-T-0258 | 5 | air | generate.py: decode loop (GEMV) yields per-token → TPOT hook | test passes | todo
-T-0259 | 5 | air | generate.py: KV-cache handling across decode steps + test | test passes | todo
-T-0260 | 5 | air | generate.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0261 | 5 | air | tests/unit/test_airllm_ledger.py — failing test for airllm_none.json (red) | test fails | todo
-T-0262 | 5 | air | runner: write results/airllm_none.json via gatekeeper (green) | test passes | todo
-T-0263 | 5 | air | airllm ledger: TTFT/TPOT/throughput/peak_vram/peak_ram/runtime/power/quality | test passes | todo
-T-0264 | 5 | air | airllm ledger: page-fault count + per-layer load time field | test passes | todo
-T-0265 | 5 | air | airllm ledger: output text + quality tag (same prompt as baseline) | test passes | todo
-T-0266 | 5 | air | tests/unit/test_peak_ram.py — failing test for peak RAM tracker (red) | test fails | todo
-T-0267 | 5 | air | src/cosmos77_ex05/airllm/ram_probe.py — peak RSS via psutil (mocked) (green) | test passes | todo
-T-0268 | 5 | air | ram_probe.py: refactor + docstrings + type hints | ruff clean | todo
-T-0269 | 5 | nb | Notebook cell: run AirLLM (quant=none) on the SAME prompt/model | cell drafted | todo
-T-0270 | 5 | nb | Notebook cell: capture peak VRAM falls to ~single-layer size | cell drafted | todo
-T-0271 | 5 | nb | Notebook markdown: explain VRAM-for-time trade, page-fault per layer | markdown present | todo
-T-0272 | 5 | air | Wire airllm.runner into SDK facade run_airllm(quant=none) | SDK call works | todo
-T-0273 | 5 | report | reports/airllm.md — narrate the SAME model now runs (RQ-b) | report present | todo
-T-0274 | 5 | report | reports/airllm.md — Paging connection table (layer=page, load=fault, mmap=zero-copy) | table present | todo
-T-0275 | 5 | report | reports/airllm.md — peak VRAM impossible→single-layer | section present | todo
-T-0276 | 5 | qa | Run gate: ruff/format/line-cap zero on Phase 5 modules | gate green | todo
-T-0277 | 5 | qa | Run gate: pytest coverage ≥85% on airllm | coverage ≥85% | todo
-T-0278 | 5 | air | generate.py: max_new_tokens + stop criteria from config + test | test passes | todo
-T-0279 | 5 | air | layer_pager.py: prefetch-next-layer option (overlap I/O) + test | test passes | todo
-T-0280 | 5 | air | runner.py: graceful handling if shard missing (manifest mismatch) + test | test passes | todo
-T-0281 | 5 | air | generate.py: separate prefill-time vs decode-time accounting + test | test passes | todo
-T-0282 | 5 | air | ram_probe.py: peak RAM includes mmap pages note + test | test passes | todo
-T-0283 | 5 | air | tests/unit/test_airllm_fixture.py — fixture results/airllm_none.sample.json | fixture loads | todo
-T-0284 | 5 | air | runner.py: disk-bandwidth log (GB/s observed per layer) + test | test passes | todo
-T-0285 | 5 | report | reports/airllm.md — why both TTFT and TPOT inflate (every layer a fault) | section present | todo
-T-0286 | 5 | report | reports/airllm.md — disk BW ≪ HBM BW explains ~1-3 tok/s | section present | todo
-T-0287 | 5 | nb | Notebook cell: free VRAM/RAM after AirLLM run | cell drafted | todo
-T-0288 | 5 | air | airllm/__init__ exports + public surface | imports clean | todo
-T-0289 | 5 | air | tests/integration/test_airllm_pipeline.py — runner→generate→ledger (mocked) | test passes | todo
-T-0290 | 5 | air | generate.py: token-by-token timestamp list for ITL distribution + test | test passes | todo
-T-0291 | 5 | air | layer_pager.py: evict policy = immediate (no cache) documented + test | test passes | todo
-T-0292 | 5 | air | runner.py: compression=none vs 8bit/4bit dispatch hook + test | test passes | todo
-T-0293 | 5 | air | airllm ledger: scenario id "none" + model id + prompt hash | test passes | todo
-T-0294 | 5 | docs | docs/prompts/005_phase5_airllm.md prompt log | file present | todo
-T-0295 | 5 | ledger | Update docs/TODO.md statuses for completed Phase 5 tasks | statuses current | todo
+T-0246 | 5 | air | tests/unit/test_airllm_runner.py — failing test for AirLLM model wrapper (red) | test fails | done
+T-0247 | 5 | air | src/cosmos77_ex05/airllm/runner.py — AirLLMLlama2/AutoModel wrapper (mocked) (green) | test passes | done
+T-0248 | 5 | air | runner.py: layer-by-layer streaming load (one layer resident) | test passes | done
+T-0249 | 5 | air | runner.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0250 | 5 | air | tests/unit/test_layer_pager.py — failing test for layer pager (red) | test fails | done
+T-0251 | 5 | air | src/cosmos77_ex05/airllm/layer_pager.py — load→use→evict per layer (green) | test passes | done
+T-0252 | 5 | air | layer_pager.py: count page faults (one per layer per step) | test passes | done
+T-0253 | 5 | air | layer_pager.py: mmap zero-copy mapping path + test | test passes | done
+T-0254 | 5 | air | layer_pager.py: refactor + docstrings + type hints | ruff clean | done
+T-0255 | 5 | air | tests/unit/test_airllm_generate.py — failing test for generate loop (red) | test fails | done
+T-0256 | 5 | air | src/cosmos77_ex05/airllm/generate.py — prefill + decode loop (mocked) (green) | test passes | done
+T-0257 | 5 | air | generate.py: prefill pass (GEMM) yields first token → TTFT hook | test passes | done
+T-0258 | 5 | air | generate.py: decode loop (GEMV) yields per-token → TPOT hook | test passes | done
+T-0259 | 5 | air | generate.py: KV-cache handling across decode steps + test | test passes | done
+T-0260 | 5 | air | generate.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0261 | 5 | air | tests/unit/test_airllm_ledger.py — failing test for airllm_none.json (red) | test fails | done
+T-0262 | 5 | air | runner: write results/airllm_none.json via gatekeeper (green) | test passes | done
+T-0263 | 5 | air | airllm ledger: TTFT/TPOT/throughput/peak_vram/peak_ram/runtime/power/quality | test passes | done
+T-0264 | 5 | air | airllm ledger: page-fault count + per-layer load time field | test passes | done
+T-0265 | 5 | air | airllm ledger: output text + quality tag (same prompt as baseline) | test passes | done
+T-0266 | 5 | air | tests/unit/test_peak_ram.py — failing test for peak RAM tracker (red) | test fails | done
+T-0267 | 5 | air | src/cosmos77_ex05/airllm/ram_probe.py — peak RSS via psutil (mocked) (green) | test passes | done
+T-0268 | 5 | air | ram_probe.py: refactor + docstrings + type hints | ruff clean | done
+T-0269 | 5 | nb | Notebook cell: run AirLLM (quant=none) on the SAME prompt/model | cell drafted | done
+T-0270 | 5 | nb | Notebook cell: capture peak VRAM falls to ~single-layer size | cell drafted | done
+T-0271 | 5 | nb | Notebook markdown: explain VRAM-for-time trade, page-fault per layer | markdown present | done
+T-0272 | 5 | air | Wire airllm.runner into SDK facade run_airllm(quant=none) | SDK call works | done
+T-0273 | 5 | report | reports/airllm.md — narrate the SAME model now runs (RQ-b) | report present | done
+T-0274 | 5 | report | reports/airllm.md — Paging connection table (layer=page, load=fault, mmap=zero-copy) | table present | done
+T-0275 | 5 | report | reports/airllm.md — peak VRAM impossible→single-layer | section present | done
+T-0276 | 5 | qa | Run gate: ruff/format/line-cap zero on Phase 5 modules | gate green | done
+T-0277 | 5 | qa | Run gate: pytest coverage ≥85% on airllm | coverage ≥85% | done
+T-0278 | 5 | air | generate.py: max_new_tokens + stop criteria from config + test | test passes | done
+T-0279 | 5 | air | layer_pager.py: prefetch-next-layer option (overlap I/O) + test | test passes | done
+T-0280 | 5 | air | runner.py: graceful handling if shard missing (manifest mismatch) + test | test passes | done
+T-0281 | 5 | air | generate.py: separate prefill-time vs decode-time accounting + test | test passes | done
+T-0282 | 5 | air | ram_probe.py: peak RAM includes mmap pages note + test | test passes | done
+T-0283 | 5 | air | tests/unit/test_airllm_fixture.py — fixture results/airllm_none.sample.json | fixture loads | done
+T-0284 | 5 | air | runner.py: disk-bandwidth log (GB/s observed per layer) + test | test passes | done
+T-0285 | 5 | report | reports/airllm.md — why both TTFT and TPOT inflate (every layer a fault) | section present | done
+T-0286 | 5 | report | reports/airllm.md — disk BW ≪ HBM BW explains ~1-3 tok/s | section present | done
+T-0287 | 5 | nb | Notebook cell: free VRAM/RAM after AirLLM run | cell drafted | done
+T-0288 | 5 | air | airllm/__init__ exports + public surface | imports clean | done
+T-0289 | 5 | air | tests/integration/test_airllm_pipeline.py — runner→generate→ledger (mocked) | test passes | done
+T-0290 | 5 | air | generate.py: token-by-token timestamp list for ITL distribution + test | test passes | done
+T-0291 | 5 | air | layer_pager.py: evict policy = immediate (no cache) documented + test | test passes | done
+T-0292 | 5 | air | runner.py: compression=none vs 8bit/4bit dispatch hook + test | test passes | done
+T-0293 | 5 | air | airllm ledger: scenario id "none" + model id + prompt hash | test passes | done
+T-0294 | 5 | docs | docs/prompts/005_phase5_airllm.md prompt log | file present | done
+T-0295 | 5 | ledger | Update docs/TODO.md statuses for completed Phase 5 tasks | statuses current | done
 
 ## Phase 6 — Quantization sweep FP16 / Q8 / Q4
 
-T-0296 | 6 | quant | tests/unit/test_quant_config.py — failing test for BitsAndBytesConfig builder (red) | test fails | todo
-T-0297 | 6 | quant | src/cosmos77_ex05/quant/config.py — build 8bit/4bit configs (green) | test passes | todo
-T-0298 | 6 | quant | config.py: 4bit NF4 + double-quant + compute dtype FP16 | test passes | todo
-T-0299 | 6 | quant | config.py: refactor + docstrings + type hints | ruff clean | todo
-T-0300 | 6 | quant | tests/unit/test_quant_runner.py — failing test for quantized AirLLM run (red) | test fails | todo
-T-0301 | 6 | quant | src/cosmos77_ex05/quant/runner.py — run AirLLM with compression=8bit (green) | test passes | todo
-T-0302 | 6 | quant | runner.py: run AirLLM with compression=4bit path | test passes | todo
-T-0303 | 6 | quant | runner.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | todo
-T-0304 | 6 | quant | tests/unit/test_quant_memory.py — failing test for memory drop ×2/×4 (red) | test fails | todo
-T-0305 | 6 | quant | src/cosmos77_ex05/quant/memory.py — expected vs measured VRAM per level (green) | test passes | todo
-T-0306 | 6 | quant | memory.py: Q8 ≈14.7 GB, Q4 ≈7.4 GB predictions + test | test passes | todo
-T-0307 | 6 | quant | memory.py: refactor + docstrings + type hints | ruff clean | todo
-T-0308 | 6 | quant | tests/unit/test_quant_ledger.py — failing test for airllm_8bit/4bit.json (red) | test fails | todo
-T-0309 | 6 | quant | runner: write results/airllm_8bit.json via gatekeeper (green) | test passes | todo
-T-0310 | 6 | quant | runner: write results/airllm_4bit.json via gatekeeper | test passes | todo
-T-0311 | 6 | quant | quant ledger: per-level memory/speed/quality fields | test passes | todo
-T-0312 | 6 | quant | tests/unit/test_red_line.py — failing test for accuracy red-line detector (red) | test fails | todo
-T-0313 | 6 | quant | src/cosmos77_ex05/quant/red_line.py — flag level where output visibly degrades (green) | test passes | todo
-T-0314 | 6 | quant | red_line.py: compare outputs FP16 vs Q8 vs Q4 on same prompt | test passes | todo
-T-0315 | 6 | quant | red_line.py: refactor + docstrings + type hints | ruff clean | todo
-T-0316 | 6 | quant | tests/unit/test_quant_quality.py — failing test for quality comparison (red) | test fails | todo
-T-0317 | 6 | quant | src/cosmos77_ex05/quant/quality_diff.py — qualitative diff per level (green) | test passes | todo
-T-0318 | 6 | quant | quality_diff.py: refactor + docstrings + type hints | ruff clean | todo
-T-0319 | 6 | nb | Notebook cell: sweep loop none→8bit→4bit (free VRAM between) | cell drafted | todo
-T-0320 | 6 | nb | Notebook cell: print same-prompt outputs side by side per level | cell drafted | todo
-T-0321 | 6 | nb | Notebook markdown: FP32→FP16 cheap, Q8 near-lossless, Q4 aggressive, NF4 default | markdown present | todo
-T-0322 | 6 | quant | Wire quant.runner into SDK facade run_quant_sweep() | SDK call works | todo
-T-0323 | 6 | report | reports/quantization.md — memory/speed/quality table per level | table present | todo
-T-0324 | 6 | report | reports/quantization.md — accuracy red line identified (RQ-c) | section present | todo
-T-0325 | 6 | report | reports/quantization.md — NF4 (QLoRA) note + Q2 smoke-test-only note | section present | todo
-T-0326 | 6 | qa | Run gate: ruff/format/line-cap zero on Phase 6 modules | gate green | todo
-T-0327 | 6 | qa | Run gate: pytest coverage ≥85% on quant | coverage ≥85% | todo
-T-0328 | 6 | quant | config.py: validate bitsandbytes is CUDA-only (skip on CPU) + test | test passes | todo
-T-0329 | 6 | quant | runner.py: per-level peak VRAM + peak RAM capture + test | test passes | todo
-T-0330 | 6 | quant | runner.py: per-level TTFT/TPOT/throughput capture + test | test passes | todo
-T-0331 | 6 | quant | memory.py: measured-vs-predicted delta report + test | test passes | todo
-T-0332 | 6 | quant | red_line.py: tag Q4 "usable", Q2 "smoke-test only" + test | test passes | todo
-T-0333 | 6 | quant | tests/unit/test_quant_fixture.py — fixtures airllm_8bit/4bit.sample.json | fixtures load | todo
-T-0334 | 6 | quant | quality_diff.py: factual-error spotting heuristic + test | test passes | todo
-T-0335 | 6 | report | reports/quantization.md — ×2/×4 memory drop vs FP16 table | table present | todo
-T-0336 | 6 | report | reports/quantization.md — speed change per level discussion | section present | todo
-T-0337 | 6 | nb | Notebook cell: free VRAM after each quant level + assert | cell drafted | todo
-T-0338 | 6 | quant | quant/__init__ exports + public surface | imports clean | todo
-T-0339 | 6 | quant | tests/integration/test_quant_sweep_pipeline.py — sweep→ledger (mocked) | test passes | todo
-T-0340 | 6 | quant | runner.py: scenario ids none/8bit/4bit consistent with config | test passes | todo
-T-0341 | 6 | quant | config.py: load quant levels from config/setup.json + test | test passes | todo
-T-0342 | 6 | quant | memory.py: bytes_per_param table sourced from constants + test | test passes | todo
-T-0343 | 6 | quant | red_line.py: deterministic on fixed prompts (no flakes) + test | test passes | todo
-T-0344 | 6 | docs | docs/prompts/006_phase6_quant.md prompt log | file present | todo
-T-0345 | 6 | ledger | Update docs/TODO.md statuses for completed Phase 6 tasks | statuses current | todo
-T-0346 | 6 | git | Commit Phase 6 quantization sweep (conventional commit) | committed; CI green | todo
-T-0347 | 6 | quant | runner.py: time-box each level run + abort guard + test | test passes | todo
-T-0348 | 6 | quant | quality_diff.py: store reference (FP16) output as quality baseline + test | test passes | todo
-T-0349 | 6 | quant | memory.py: KV-cache memory unchanged-by-quant note + test | test passes | todo
-T-0350 | 6 | quant | red_line.py: report which level crosses the red line in ledger | test passes | todo
+T-0296 | 6 | quant | tests/unit/test_quant_config.py — failing test for BitsAndBytesConfig builder (red) | test fails | done
+T-0297 | 6 | quant | src/cosmos77_ex05/quant/config.py — build 8bit/4bit configs (green) | test passes | done
+T-0298 | 6 | quant | config.py: 4bit NF4 + double-quant + compute dtype FP16 | test passes | done
+T-0299 | 6 | quant | config.py: refactor + docstrings + type hints | ruff clean | done
+T-0300 | 6 | quant | tests/unit/test_quant_runner.py — failing test for quantized AirLLM run (red) | test fails | done
+T-0301 | 6 | quant | src/cosmos77_ex05/quant/runner.py — run AirLLM with compression=8bit (green) | test passes | done
+T-0302 | 6 | quant | runner.py: run AirLLM with compression=4bit path | test passes | done
+T-0303 | 6 | quant | runner.py: refactor for ≤150 lines + docstrings + type hints | line-cap 0; ruff clean | done
+T-0304 | 6 | quant | tests/unit/test_quant_memory.py — failing test for memory drop ×2/×4 (red) | test fails | done
+T-0305 | 6 | quant | src/cosmos77_ex05/quant/memory.py — expected vs measured VRAM per level (green) | test passes | done
+T-0306 | 6 | quant | memory.py: Q8 ≈14.7 GB, Q4 ≈7.4 GB predictions + test | test passes | done
+T-0307 | 6 | quant | memory.py: refactor + docstrings + type hints | ruff clean | done
+T-0308 | 6 | quant | tests/unit/test_quant_ledger.py — failing test for airllm_8bit/4bit.json (red) | test fails | done
+T-0309 | 6 | quant | runner: write results/airllm_8bit.json via gatekeeper (green) | test passes | done
+T-0310 | 6 | quant | runner: write results/airllm_4bit.json via gatekeeper | test passes | done
+T-0311 | 6 | quant | quant ledger: per-level memory/speed/quality fields | test passes | done
+T-0312 | 6 | quant | tests/unit/test_red_line.py — failing test for accuracy red-line detector (red) | test fails | done
+T-0313 | 6 | quant | src/cosmos77_ex05/quant/red_line.py — flag level where output visibly degrades (green) | test passes | done
+T-0314 | 6 | quant | red_line.py: compare outputs FP16 vs Q8 vs Q4 on same prompt | test passes | done
+T-0315 | 6 | quant | red_line.py: refactor + docstrings + type hints | ruff clean | done
+T-0316 | 6 | quant | tests/unit/test_quant_quality.py — failing test for quality comparison (red) | test fails | done
+T-0317 | 6 | quant | src/cosmos77_ex05/quant/quality_diff.py — qualitative diff per level (green) | test passes | done
+T-0318 | 6 | quant | quality_diff.py: refactor + docstrings + type hints | ruff clean | done
+T-0319 | 6 | nb | Notebook cell: sweep loop none→8bit→4bit (free VRAM between) | cell drafted | done
+T-0320 | 6 | nb | Notebook cell: print same-prompt outputs side by side per level | cell drafted | done
+T-0321 | 6 | nb | Notebook markdown: FP32→FP16 cheap, Q8 near-lossless, Q4 aggressive, NF4 default | markdown present | done
+T-0322 | 6 | quant | Wire quant.runner into SDK facade run_quant_sweep() | SDK call works | done
+T-0323 | 6 | report | reports/quantization.md — memory/speed/quality table per level | table present | done
+T-0324 | 6 | report | reports/quantization.md — accuracy red line identified (RQ-c) | section present | done
+T-0325 | 6 | report | reports/quantization.md — NF4 (QLoRA) note + Q2 smoke-test-only note | section present | done
+T-0326 | 6 | qa | Run gate: ruff/format/line-cap zero on Phase 6 modules | gate green | done
+T-0327 | 6 | qa | Run gate: pytest coverage ≥85% on quant | coverage ≥85% | done
+T-0328 | 6 | quant | config.py: validate bitsandbytes is CUDA-only (skip on CPU) + test | test passes | done
+T-0329 | 6 | quant | runner.py: per-level peak VRAM + peak RAM capture + test | test passes | done
+T-0330 | 6 | quant | runner.py: per-level TTFT/TPOT/throughput capture + test | test passes | done
+T-0331 | 6 | quant | memory.py: measured-vs-predicted delta report + test | test passes | done
+T-0332 | 6 | quant | red_line.py: tag Q4 "usable", Q2 "smoke-test only" + test | test passes | done
+T-0333 | 6 | quant | tests/unit/test_quant_fixture.py — fixtures airllm_8bit/4bit.sample.json | fixtures load | done
+T-0334 | 6 | quant | quality_diff.py: factual-error spotting heuristic + test | test passes | done
+T-0335 | 6 | report | reports/quantization.md — ×2/×4 memory drop vs FP16 table | table present | done
+T-0336 | 6 | report | reports/quantization.md — speed change per level discussion | section present | done
+T-0337 | 6 | nb | Notebook cell: free VRAM after each quant level + assert | cell drafted | done
+T-0338 | 6 | quant | quant/__init__ exports + public surface | imports clean | done
+T-0339 | 6 | quant | tests/integration/test_quant_sweep_pipeline.py — sweep→ledger (mocked) | test passes | done
+T-0340 | 6 | quant | runner.py: scenario ids none/8bit/4bit consistent with config | test passes | done
+T-0341 | 6 | quant | config.py: load quant levels from config/setup.json + test | test passes | done
+T-0342 | 6 | quant | memory.py: bytes_per_param table sourced from constants + test | test passes | done
+T-0343 | 6 | quant | red_line.py: deterministic on fixed prompts (no flakes) + test | test passes | done
+T-0344 | 6 | docs | docs/prompts/006_phase6_quant.md prompt log | file present | done
+T-0345 | 6 | ledger | Update docs/TODO.md statuses for completed Phase 6 tasks | statuses current | done
+T-0346 | 6 | git | Commit Phase 6 quantization sweep (conventional commit) | committed; CI green | done
+T-0347 | 6 | quant | runner.py: time-box each level run + abort guard + test | test passes | done
+T-0348 | 6 | quant | quality_diff.py: store reference (FP16) output as quality baseline + test | test passes | done
+T-0349 | 6 | quant | memory.py: KV-cache memory unchanged-by-quant note + test | test passes | done
+T-0350 | 6 | quant | red_line.py: report which level crosses the red line in ledger | test passes | done
 
 ## Phase 7 — Measurement harness + tables + graphs + Roofline
 
