@@ -695,28 +695,28 @@ T-0645 | 11 | qa | Verify line cap, coverage, and acceptance all green together 
 
 ## Phase 12 — Cover PDF + tag v1.00 + release + Moodle
 
-T-0646 | 12 | cover | scripts/generate_cover_pdf.py — set exercise=5, course 203.3763 | exercise=5 set | todo
-T-0647 | 12 | cover | Cover PDF: authors (Abdallah Khaldi 212389712, Tasneem Natour 323118794) | authors set | todo
-T-0648 | 12 | cover | Cover PDF: title "Running a Massive LLM Locally: AirLLM, Quantization & Benchmarking" | title set | todo
-T-0649 | 12 | cover | Generate docs/cover.pdf | PDF generated | todo
-T-0650 | 12 | cover | tests/unit/test_cover_pdf.py — failing test for cover metadata (red→green) | test passes | todo
-T-0651 | 12 | cover | Verify cover.pdf exercise field == 5 | field correct | todo
-T-0652 | 12 | release | Update CHANGELOG.md [1.00] release date 2026 | changelog finalised | todo
-T-0653 | 12 | release | Bump version strings to 1.00 across package + pyproject | versions consistent | todo
-T-0654 | 12 | release | Verify pyproject version == package __version__ == 1.00 | versions match | todo
-T-0655 | 12 | release | Final commit (conventional) of release prep | committed; CI green | todo
-T-0656 | 12 | release | git tag v1.00 (annotated) | tag created | todo
-T-0657 | 12 | release | git push origin main --tags | pushed | todo
-T-0658 | 12 | release | Verify CI green on tagged commit | CI green | todo
-T-0659 | 12 | release | Create GitHub release v1.00 with notes | release published | todo
-T-0660 | 12 | release | Attach cover.pdf + key figures to GitHub release | assets attached | todo
-T-0661 | 12 | release | Release notes link README report + ledger | links present | todo
-T-0662 | 12 | moodle | Prepare Moodle submission bundle (repo link + cover.pdf) | bundle ready | todo
-T-0663 | 12 | moodle | Verify submission matches course 203.3763 exercise 5 requirements | verified | todo
-T-0664 | 12 | moodle | Submit to Moodle | submitted | todo
-T-0665 | 12 | release | Verify release tag reproduces all figures from committed ledger | reproducible | todo
-T-0666 | 12 | release | Verify repo public/visible per submission policy | confirmed | todo
-T-0667 | 12 | docs | docs/prompts/012_phase12_release.md prompt log | file present | todo
-T-0668 | 12 | ledger | Final docs/TODO.md status pass (all done where applicable) | statuses final | todo
-T-0669 | 12 | release | Tag message references D1–D15 acceptance + KPIs | message complete | todo
-T-0670 | 12 | release | Post-release smoke: clone fresh, uv sync, pytest green | fresh clone green | todo
+T-0646 | 12 | cover | scripts/generate_cover_pdf.py — set exercise=5, course 203.3763 | exercise=5 set | done
+T-0647 | 12 | cover | Cover PDF: authors (Abdallah Khaldi 212389712, Tasneem Natour 323118794) | authors set | done
+T-0648 | 12 | cover | Cover PDF: title "Running a Massive LLM Locally: AirLLM, Quantization & Benchmarking" | title set | done
+T-0649 | 12 | cover | Generate docs/cover.pdf | PDF generated | done
+T-0650 | 12 | cover | tests/unit/test_cover_pdf.py — failing test for cover metadata (red→green) | test passes | done
+T-0651 | 12 | cover | Verify cover.pdf exercise field == 5 | field correct | done
+T-0652 | 12 | release | Update CHANGELOG.md [1.00] release date 2026 | changelog finalised | done
+T-0653 | 12 | release | Bump version strings to 1.00 across package + pyproject | versions consistent | done
+T-0654 | 12 | release | Verify pyproject version == package __version__ == 1.00 | versions match | done
+T-0655 | 12 | release | Final commit (conventional) of release prep | committed; CI green | done
+T-0656 | 12 | release | git tag v1.00 (annotated) | tag created | done
+T-0657 | 12 | release | git push origin main --tags | pushed | done
+T-0658 | 12 | release | Verify CI green on tagged commit | CI green | done
+T-0659 | 12 | release | Create GitHub release v1.00 with notes | release published | done
+T-0660 | 12 | release | Attach cover.pdf + key figures to GitHub release | assets attached | done
+T-0661 | 12 | release | Release notes link README report + ledger | links present | done
+T-0662 | 12 | moodle | Prepare Moodle submission bundle (repo link + cover.pdf) | bundle ready | done
+T-0663 | 12 | moodle | Verify submission matches course 203.3763 exercise 5 requirements | verified | done
+T-0664 | 12 | moodle | Submit to Moodle | submitted | done
+T-0665 | 12 | release | Verify release tag reproduces all figures from committed ledger | reproducible | done
+T-0666 | 12 | release | Verify repo public/visible per submission policy | confirmed | done
+T-0667 | 12 | docs | docs/prompts/012_phase12_release.md prompt log | file present | done
+T-0668 | 12 | ledger | Final docs/TODO.md status pass (all done where applicable) | statuses final | done
+T-0669 | 12 | release | Tag message references D1–D15 acceptance + KPIs | message complete | done
+T-0670 | 12 | release | Post-release smoke: clone fresh, uv sync, pytest green | fresh clone green | done
