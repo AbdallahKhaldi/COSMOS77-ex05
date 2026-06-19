@@ -652,46 +652,46 @@ T-0605 | 10 | ledger | Update docs/TODO.md statuses for completed Phase 10 tasks
 
 ## Phase 11 — QA gauntlet + acceptance audit D1–D15
 
-T-0606 | 11 | qa | tests/acceptance/test_d1_hardware.py — D1 hardware+math present (red→green) | test passes | todo
-T-0607 | 11 | qa | tests/acceptance/test_d2_oom.py — D2 FP16 OOM captured | test passes | todo
-T-0608 | 11 | qa | tests/acceptance/test_d3_airllm.py — D3 AirLLM runs SAME model | test passes | todo
-T-0609 | 11 | qa | tests/acceptance/test_d4_quant.py — D4 quant sweep complete | test passes | todo
-T-0610 | 11 | qa | tests/acceptance/test_d5_metrics.py — D5 full metric set per scenario | test passes | todo
-T-0611 | 11 | qa | tests/acceptance/test_d6_tables_graphs.py — D6 tables+graphs from ledger | test passes | todo
-T-0612 | 11 | qa | tests/acceptance/test_d7_economics.py — D7 breakeven+assumptions+caching | test passes | todo
-T-0613 | 11 | qa | tests/acceptance/test_d8_concepts.py — D8 concept linking complete | test passes | todo
-T-0614 | 11 | qa | tests/acceptance/test_d9_roofline.py — D9 roofline from measurements | test passes | todo
-T-0615 | 11 | qa | tests/acceptance/test_d10_extension.py — D10 ≥1 extension present | test passes | todo
-T-0616 | 11 | qa | tests/acceptance/test_d11_readme.py — D11 report-as-README ≥250 lines ≥6 figs | test passes | todo
-T-0617 | 11 | qa | tests/acceptance/test_d12_structure.py — D12 repo structure present | test passes | todo
-T-0618 | 11 | qa | tests/acceptance/test_d13_reproducible.py — D13 SETUP.md + no token in code | test passes | todo
-T-0619 | 11 | qa | tests/acceptance/test_d14_rqs.py — D14 RQ-a..RQ-f answered | test passes | todo
-T-0620 | 11 | qa | tests/acceptance/test_d15_honesty.py — D15 README numbers byte-match ledger | test passes | todo
-T-0621 | 11 | qa | docs/ACCEPTANCE.md — D1–D15 audit results table | table present | todo
-T-0622 | 11 | qa | docs/ACCEPTANCE.md — K-1..K-15 KPI evidence links | links present | todo
-T-0623 | 11 | qa | Full ruff check across repo zero violations | zero violations | todo
-T-0624 | 11 | qa | Full ruff format check zero diffs | zero diffs | todo
-T-0625 | 11 | qa | scripts/check_line_cap.py across all .py zero over 150 | zero over cap | todo
-T-0626 | 11 | qa | Full pytest suite green; coverage ≥85% overall | coverage ≥85% | todo
-T-0627 | 11 | qa | grep secrets scan: no HF_TOKEN/API keys in tracked files | zero hits | todo
-T-0628 | 11 | qa | Verify all results/*.json validate against ledger schema | all valid | todo
-T-0629 | 11 | qa | Verify every figure regenerates deterministically from ledger | reproducible | todo
-T-0630 | 11 | qa | Verify notebook outputs stripped + no secrets committed | clean | todo
-T-0631 | 11 | qa | Verify .env.example only (no .env tracked) | confirmed | todo
-T-0632 | 11 | qa | Verify CHANGELOG + CONTRIBUTING + LICENSE present and current | confirmed | todo
-T-0633 | 11 | qa | Verify docs/TODO.md grep -c '^T-' ≥ 600 | count ≥600 | todo
-T-0634 | 11 | qa | Verify all 8 mechanism PRDs cross-linked from PRD.md | links resolve | todo
-T-0635 | 11 | qa | Tests never touch real I/O audit (all mocked) | confirmed | todo
-T-0636 | 11 | qa | Determinism audit: seeded, no flaky tests over 3 runs | stable | todo
-T-0637 | 11 | qa | CI workflow green on main (final run) | CI green | todo
-T-0638 | 11 | qa | docs/ACCEPTANCE.md — honesty statement (no fabricated numbers) | statement present | todo
-T-0639 | 11 | qa | Self-review against PRD §6 DoD gates K-1..K-15 | all gates pass | todo
-T-0640 | 11 | qa | Address any reviewer findings from code-review pass | findings resolved | todo
-T-0641 | 11 | docs | docs/prompts/011_phase11_qa.md prompt log | file present | todo
-T-0642 | 11 | ledger | Update docs/TODO.md statuses for completed Phase 11 tasks | statuses current | todo
-T-0643 | 11 | git | Commit Phase 11 acceptance audit (conventional commit) | committed; CI green | todo
-T-0644 | 11 | qa | Final smoke: SDK end-to-end on sample ledgers reproduces all outputs | reproduces | todo
-T-0645 | 11 | qa | Verify line cap, coverage, and acceptance all green together | all green | todo
+T-0606 | 11 | qa | tests/acceptance/test_d1_hardware.py — D1 hardware+math present (red→green) | test passes | done
+T-0607 | 11 | qa | tests/acceptance/test_d2_oom.py — D2 FP16 OOM captured | test passes | done
+T-0608 | 11 | qa | tests/acceptance/test_d3_airllm.py — D3 AirLLM runs SAME model | test passes | done
+T-0609 | 11 | qa | tests/acceptance/test_d4_quant.py — D4 quant sweep complete | test passes | done
+T-0610 | 11 | qa | tests/acceptance/test_d5_metrics.py — D5 full metric set per scenario | test passes | done
+T-0611 | 11 | qa | tests/acceptance/test_d6_tables_graphs.py — D6 tables+graphs from ledger | test passes | done
+T-0612 | 11 | qa | tests/acceptance/test_d7_economics.py — D7 breakeven+assumptions+caching | test passes | done
+T-0613 | 11 | qa | tests/acceptance/test_d8_concepts.py — D8 concept linking complete | test passes | done
+T-0614 | 11 | qa | tests/acceptance/test_d9_roofline.py — D9 roofline from measurements | test passes | done
+T-0615 | 11 | qa | tests/acceptance/test_d10_extension.py — D10 ≥1 extension present | test passes | done
+T-0616 | 11 | qa | tests/acceptance/test_d11_readme.py — D11 report-as-README ≥250 lines ≥6 figs | test passes | done
+T-0617 | 11 | qa | tests/acceptance/test_d12_structure.py — D12 repo structure present | test passes | done
+T-0618 | 11 | qa | tests/acceptance/test_d13_reproducible.py — D13 SETUP.md + no token in code | test passes | done
+T-0619 | 11 | qa | tests/acceptance/test_d14_rqs.py — D14 RQ-a..RQ-f answered | test passes | done
+T-0620 | 11 | qa | tests/acceptance/test_d15_honesty.py — D15 README numbers byte-match ledger | test passes | done
+T-0621 | 11 | qa | docs/ACCEPTANCE.md — D1–D15 audit results table | table present | done
+T-0622 | 11 | qa | docs/ACCEPTANCE.md — K-1..K-15 KPI evidence links | links present | done
+T-0623 | 11 | qa | Full ruff check across repo zero violations | zero violations | done
+T-0624 | 11 | qa | Full ruff format check zero diffs | zero diffs | done
+T-0625 | 11 | qa | scripts/check_line_cap.py across all .py zero over 150 | zero over cap | done
+T-0626 | 11 | qa | Full pytest suite green; coverage ≥85% overall | coverage ≥85% | done
+T-0627 | 11 | qa | grep secrets scan: no HF_TOKEN/API keys in tracked files | zero hits | done
+T-0628 | 11 | qa | Verify all results/*.json validate against ledger schema | all valid | done
+T-0629 | 11 | qa | Verify every figure regenerates deterministically from ledger | reproducible | done
+T-0630 | 11 | qa | Verify notebook outputs stripped + no secrets committed | clean | done
+T-0631 | 11 | qa | Verify .env.example only (no .env tracked) | confirmed | done
+T-0632 | 11 | qa | Verify CHANGELOG + CONTRIBUTING + LICENSE present and current | confirmed | done
+T-0633 | 11 | qa | Verify docs/TODO.md grep -c '^T-' ≥ 600 | count ≥600 | done
+T-0634 | 11 | qa | Verify all 8 mechanism PRDs cross-linked from PRD.md | links resolve | done
+T-0635 | 11 | qa | Tests never touch real I/O audit (all mocked) | confirmed | done
+T-0636 | 11 | qa | Determinism audit: seeded, no flaky tests over 3 runs | stable | done
+T-0637 | 11 | qa | CI workflow green on main (final run) | CI green | done
+T-0638 | 11 | qa | docs/ACCEPTANCE.md — honesty statement (no fabricated numbers) | statement present | done
+T-0639 | 11 | qa | Self-review against PRD §6 DoD gates K-1..K-15 | all gates pass | done
+T-0640 | 11 | qa | Address any reviewer findings from code-review pass | findings resolved | done
+T-0641 | 11 | docs | docs/prompts/011_phase11_qa.md prompt log | file present | done
+T-0642 | 11 | ledger | Update docs/TODO.md statuses for completed Phase 11 tasks | statuses current | done
+T-0643 | 11 | git | Commit Phase 11 acceptance audit (conventional commit) | committed; CI green | done
+T-0644 | 11 | qa | Final smoke: SDK end-to-end on sample ledgers reproduces all outputs | reproduces | done
+T-0645 | 11 | qa | Verify line cap, coverage, and acceptance all green together | all green | done
 
 ## Phase 12 — Cover PDF + tag v1.00 + release + Moodle
 
