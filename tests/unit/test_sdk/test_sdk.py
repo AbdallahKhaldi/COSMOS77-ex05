@@ -57,10 +57,25 @@ def test_capture_hardware_delegates(config, monkeypatch):
     assert captured["justify"][1] == pytest.approx(14.7e9)
 
 
-@pytest.mark.parametrize("method", ["measure", "analyze", "economics", "report"])
+@pytest.mark.parametrize("method", ["measure", "economics", "report"])
 def test_unimplemented_stages_raise(config, method):
     with pytest.raises(NotImplementedError):
         getattr(SDK(config=config), method)()
+
+
+def test_analyze_builds_tables_and_figures(config, monkeypatch):
+    import cosmos77_ex05.analysis.plots as plots
+    import cosmos77_ex05.analysis.roofline as roofline
+    import cosmos77_ex05.analysis.tables as tables
+
+    sdk = SDK(config=config)
+    sdk.gatekeeper.record("airllm_4bit", {"success": True, "throughput_tok_s": 0.041})
+    monkeypatch.setattr(tables, "write_metrics_md", lambda led, p: p)
+    monkeypatch.setattr(plots, "generate_all", lambda led, d: [d / "a.png"])
+    monkeypatch.setattr(roofline, "plot_roofline", lambda led, d: d / "roofline.png")
+    out = sdk.analyze()
+    assert "airllm_4bit" in out["scenarios"]
+    assert len(out["figures"]) == 2
 
 
 def test_run_baseline_records_ledger(config, monkeypatch):

@@ -100,12 +100,20 @@ class SDK:
         return float(self.config.hardware_assumptions().get("gpu_power_watts", 70))
 
     def measure(self) -> Any:
-        """The measurement harness — TTFT/TPOT/throughput/peak mem (Phase 7)."""
-        raise NotImplementedError("measure lands in Phase 7")
+        """The measurement harness runs inside the runners on the GPU (notebook), not here."""
+        raise NotImplementedError("measurement happens in the runners on the T4, not on the Mac")
 
-    def analyze(self) -> Any:
-        """Build the comparison tables + graphs + Roofline (Phase 7)."""
-        raise NotImplementedError("analyze lands in Phase 7")
+    def analyze(self) -> dict[str, Any]:
+        """Build the comparison tables + graphs + Roofline from the ledger (D6/D9)."""
+        from cosmos77_ex05.analysis import plots, roofline, tables
+
+        ledger = self.gatekeeper.ledger()
+        reports_dir = self.repo_root / self.config.paths().get("reports_dir", "reports")
+        figures_dir = self.repo_root / self.config.paths().get("figures_dir", "figures")
+        metrics_md = tables.write_metrics_md(ledger, reports_dir / "METRICS.md")
+        figs = list(plots.generate_all(ledger, figures_dir))
+        figs.append(roofline.plot_roofline(ledger, figures_dir))
+        return {"metrics_md": metrics_md, "figures": figs, "scenarios": list(ledger)}
 
     def economics(self) -> Any:
         """The On-Prem vs API vs Cloud-GPU break-even report (Phase 8)."""

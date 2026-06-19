@@ -54,6 +54,12 @@ def _dispatch(command: str) -> int:
         print(f"model: {math.get('model_id')} -> FP16 {math.get('memory_gb', {}).get('fp16')} GB")
         print(f"verdict: {math.get('verdict')}")
         return 0
+    if command == "analyze":
+        out = sdk.analyze()
+        print(f"wrote {out['metrics_md']}")
+        for fig in out["figures"]:
+            print(f"figure: {fig}")
+        return 0
     print(f"`{command}` is not wired yet — it lands in its phase (see docs/TODO.md).")
     return 0
 
