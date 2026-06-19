@@ -22,7 +22,7 @@ The experiment ran on a free **Kaggle Tesla T4** (`results/hardware.json`):
 
 | Resource | Value |
 |---|---|
-| GPU | **Tesla T4**, ≈15.9 GB usable VRAM |
+| GPU | **Tesla T4**, ≈15.6 GB usable VRAM |
 | Host RAM | 33.7 GB |
 | CPU | x86_64, 2 physical / 4 logical cores |
 | Disk | ~8.6 TB (1.18 TB free) |
@@ -141,7 +141,7 @@ Full mapping in [`reports/CONCEPTS.md`](reports/CONCEPTS.md). The highlights:
 - **AirLLM = OS paging**: a layer = a page, layer-load = page fault, `mmap` = zero-copy
   page-in, evict-after-use = replacement; SafeTensors is the `mmap`-able page store.
 - **Prefill vs Decode collapse**: TTFT ≈ TPOT (FP16/8-bit) because *every* step is a full
-  51-layer disk sweep — AirLLM flattens the two regimes into one disk-bound one.
+  51-shard disk sweep — AirLLM flattens the two regimes into one disk-bound one.
 - **Page-cache warming**: 4-bit's TTFT > TPOT (cold first token, warm later tokens; small
   shards stay cached) — a textbook OS-paging effect, visible in the data.
 - **Quantization** speeds memory-bound work by shrinking the disk footprint (≈6× FP16→Q4).

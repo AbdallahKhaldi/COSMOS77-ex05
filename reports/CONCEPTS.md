@@ -17,10 +17,10 @@
 
 A parameter costs **bytes = params × bytes/param**. Qwen2.5-14B has ≈14.7 B params, so
 in FP16 (2 bytes) the weights alone are **≈29.4 GB**, before activations, the KV-cache,
-or the CUDA context. The T4 exposes ≈15.9 GB of usable VRAM. `29.4 GB > 15.9 GB`, so
+or the CUDA context. The T4 exposes ≈15.6 GB of usable VRAM. `29.4 GB > 15.6 GB`, so
 `AutoModelForCausalLM(..., device_map="cuda")` raises a real
 `torch.cuda.OutOfMemoryError` (`results/fp16_baseline.json`: *"GPU 0 has a total
-capacity of 15.89 GiB of which 102.81 MiB is free"*). **The bottleneck is memory
+capacity of 14.56 GiB of which 102.81 MiB is free"*). **The bottleneck is memory
 capacity, not compute** — the GPU never reaches the first GEMM. This is the lecture's
 VRAM wall.
 
@@ -67,7 +67,7 @@ prefill is parallel; the two regimes have very different arithmetic intensity.
 
 Our numbers show something subtle: **TTFT ≈ TPOT** for FP16 (142.3 vs 142.4 s) and
 8-bit (70.1 vs 72.7 s). Under AirLLM, *both* a prefill step and a decode step pay the
-**same dominant cost — one full 51-layer sweep off disk**. The disk-load term is so
+**same dominant cost — one full 51-shard sweep off disk**. The disk-load term is so
 large that it swamps the GEMM-vs-GEMV compute difference, so the usual Prefill/Decode
 asymmetry **collapses**: every step, prompt or token, is disk-bound. AirLLM doesn't
 just slow inference down — it *re-shapes* it into a single disk-bound regime.
@@ -115,7 +115,7 @@ these lengths the run is dominated by paging weights, not by the KV-cache, keepi
 
 | Lecture concept | Measured confirmation |
 |---|---|
-| VRAM capacity wall | FP16 baseline OOMs (29.4 > 15.9 GB) |
+| VRAM capacity wall | FP16 baseline OOMs (29.4 > 15.6 GB) |
 | Paging / "layer = page" | runs in 1.6–3.2 GB vs 29.4 GB needed |
 | Decode is memory-bound | AI ≈1–4 ≪ ridge 203; far left on the Roofline |
 | Disk BW ≪ HBM BW | effective ≈0.2–0.3 GB/s vs 320 GB/s (~1500×) |

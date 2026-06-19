@@ -4,10 +4,10 @@
 
 We loaded `Qwen/Qwen2.5-14B-Instruct` the obvious way —
 `AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=float16, device_map="cuda")`
-— on the Kaggle **Tesla T4 (≈15.9 GB usable VRAM)**. It raised, for real:
+— on the Kaggle **Tesla T4 (≈15.6 GB usable VRAM)**. It raised, for real:
 
 > `torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 136.00 MiB.
-> GPU 0 has a total capacity of 15.89 GiB of which 102.81 MiB is free.`
+> GPU 0 has a total capacity of 14.56 GiB of which 102.81 MiB is free.`
 > *(verbatim from `results/fp16_baseline.json`)*
 
 **The bottleneck is memory capacity, not compute.** The param→memory math predicted it:
