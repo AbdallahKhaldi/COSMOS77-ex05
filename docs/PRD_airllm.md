@@ -24,7 +24,7 @@ correct causal explanation is the deliverable.
 **Inputs (all config-driven — no hardcoding, rule 4):**
 - `config/setup.json → experiment`: `model_id` (`Qwen/Qwen2.5-14B-Instruct`), `prompt`
   (`"Explain the attention mechanism in transformers."`), `max_new_tokens` (`20`),
-  `layer_shards_saving_path` (`/kaggle/working/shards`), `max_seq_len` (`128`).
+  `layer_shards_saving_path` (`/kaggle/temp/shards`), `max_seq_len` (`128`).
 - `HF_TOKEN` from `.env` / Kaggle secrets (never in code, rule 9) — for the model download.
 - Runtime: free Kaggle T4 (the *experiment env*, its own `pip`; `uv` governs our package only, rule 5).
 
@@ -69,10 +69,11 @@ def run_airllm(
 
 - Builds the model via the **injected factory** (default `AutoModel.from_pretrained`):
   `model_factory(model_id, layer_shards_saving_path=cfg.layer_shards_saving_path,
-  delete_original=True, profiling_mode=True)`.
+  delete_original=False, profiling_mode=True)`.
   - `layer_shards_saving_path` — where AirLLM writes the per-layer SafeTensors shards (the "swap file").
-  - `delete_original=True` — drop the monolithic checkpoint after re-shaping into per-layer shards
-    (T4 disk is small; we keep only the paged form).
+  - `delete_original=False` — KEEP the monolithic HF download so each scenario (FP16/8bit/4bit)
+    can re-shard from it without re-downloading; the notebook instead **clears the shards dir
+    between scenarios** so the per-level shard sets never accumulate on Kaggle's shared overlay disk.
   - `profiling_mode=True` — AirLLM emits the **per-layer load + compute timings** we report as the
     direct evidence of paging.
 - **Tokenize** the configured prompt with the AirLLM model's tokenizer (`max_seq_len` from config).
@@ -135,7 +136,7 @@ and the model's `generate` are **injected as mocks** returning **canned tokens +
 |------|---------|
 | `test_run_airllm_records_ledger_entry` | With mocked factory + generate, `run_airllm` writes one `results/airllm_none.json` entry with **`success=True`** and **all expected fields** (`ttft_s`, `tpot_ms`, `throughput_tok_s`, `peak_ram_gb`, `peak_vram_gb`, `total_s`, `est_power_wh`, `n_out`, `text`, `per_layer_timings`). |
 | `test_no_real_download_or_gpu` | The **injected factory mock is the only model constructor called** — assert no `airllm.AutoModel.from_pretrained` real import-time download, no `torch.cuda` allocation; `.cuda()` is skipped/stubbed when `is_available()` is patched `False`. |
-| `test_factory_called_with_config_args` | Factory invoked with `layer_shards_saving_path`, `delete_original=True`, `profiling_mode=True` **from config**, not literals (rule 4). |
+| `test_factory_called_with_config_args` | Factory invoked with `layer_shards_saving_path`, `delete_original=False`, `profiling_mode=True` **from config**, not literals (rule 4). |
 | `test_generate_uses_config_max_new_tokens` | `generate(..., max_new_tokens=20)` driven by `config.max_new_tokens`. |
 | `test_decoded_text_returned` | Canned token ids decode to the expected string via a mocked tokenizer. |
 | `test_per_layer_timings_passthrough` | Canned `profiling_mode` timings are returned raw and stored in the ledger entry. |
@@ -166,8 +167,11 @@ canned per-layer ms), a `FakeTokenizer` (deterministic encode/decode), patched `
   pin the AirLLM version in the experiment env's documented requirements; tests assert our call shape, not AirLLM internals.
 - **`.cuda()` placement error** — AirLLM's most common runtime failure is input ids left on CPU.
   *Mitigation:* the guarded `.cuda()` is the dedicated fix; `test_cuda_placement_guarded` covers it.
-- **Disk pressure on T4** — `delete_original=True` plus per-layer shards can still strain the ~20 GB
-  scratch. *Mitigation:* config-driven `layer_shards_saving_path` on `/kaggle/working`; documented in `experiments/SETUP.md`.
+- **Disk pressure on T4** — `/kaggle/temp` + `/kaggle/working` are ONE shared ~58–73 GB overlay; a 14B
+  download (~29 GB) + FP16 shards (~29 GB) peaks near ~58 GB. *Mitigation:* shards on
+  `/kaggle/temp/shards`, the download kept once (`delete_original=False`), shards **cleared between
+  scenarios**, only small JSONs saved to `/kaggle/working`; Cell 1 warns < 55 GB free and the 7B
+  fallback is documented in `experiments/SETUP.md` (honesty, D15).
 - **Run-time too long** — at ~1–3 tok/s, `max_new_tokens` is intentionally small (`20`); smoke-test
   with `max_new_tokens=1` first. The slowness **is the result**, not a failure (RQ-e, rule: negatives are valid).
 - **Mock divergence from reality** — canned timings could mask a real-run break. *Mitigation:* the
